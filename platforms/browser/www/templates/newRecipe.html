@@ -1,0 +1,46 @@
+<ion-view title="New recipe" id="page10" style="background-color: rgb(242, 242, 242);">
+  <ion-content padding="true" class="has-header">
+    <div id="newRecipe-container14" class="multimedia">
+      <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
+        <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+      </div>
+      <div class="spacer" style="height: 15px;"></div>
+      <div ng-init="videourl_video1=&quot;https://www.youtube.com/embed/OYlQWuWEyOI?rel=0&amp;showinfo=0&quot;" style="position:relative;overflow:hidden;padding-bottom:56.25%;height:0;" id="newRecipe-video1" class="upvid">
+        <iframe src="{{videourl_video1}}" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" width="560" height="315"></iframe>
+      </div>
+      <div class="spacer" style="height: 15px;"></div>
+    </div>
+    <div id="newRecipe-container18" class="recipeInfo">
+      <form id="newRecipe-form14" class="list">
+        <label class="item item-input" id="newRecipe-input27">
+          <span class="input-label">Recipe title</span>
+          <input placeholder="" type="text">
+        </label>
+        <label class="item item-input" id="newRecipe-input28" name="prepTime">
+          <span class="input-label">Preparation time</span>
+          <input placeholder="prepTime" type="time">
+        </label>
+        <label class="item item-input" id="newRecipe-input29" name="servings">
+          <span class="input-label">Servings</span>
+          <input placeholder="" type="number">
+        </label>
+      </form>
+    </div>
+    <ion-list id="newRecipe-list6" class="ingredients">
+      <ion-item class="item-divider" id="newRecipe-list-item-divider1"> Ingredients</ion-item>
+      <ion-item id="newRecipe-list-item17" style="">1/4 cup brown sugar</ion-item>
+      <ion-item id="newRecipe-list-item18" style="">2 tablespoons of soy sauce</ion-item>
+      <ion-item class="item-icon-right last-item" id="newRecipe-list-item19" style="">Ex. 2 cups of milk
+        <i class="icon ion-plus icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    <ion-list id="newRecipe-list7" class="Directions">
+      <ion-item class="item-divider" id="newRecipe-list-item-divider2"> Directions</ion-item>
+      <ion-item id="newRecipe-list-item20" style="">Step #1</ion-item>
+      <ion-item id="newRecipe-list-item21" style="">Strep #2</ion-item>
+      <ion-item class="item-icon-right last-item" id="newRecipe-list-item22" style="">Step #3
+        <i class="icon ion-plus icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "VeganShopinGuide",
+  "short_name": "VeganShopinGuide",
+  "version": "io.cordova.hellocordova",
+  "description": "$app description",
+  "author": "Wilferson Avila and Jonathan Barillas",
+  "icons": [],
+  "start_url": "index.html"
+}

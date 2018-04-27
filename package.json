@@ -1,0 +1,26 @@
+{
+    "name": "VSG App",
+    "displayName": "Vegan Shoping Guide",
+    "version": "1.0.0",
+    "description": "Making your life easier since...",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Anser Team, Wilferson Avil and Jonathan Barillas",
+    "license": "Apache 2.0",
+    "dependencies": {
+        "cordova-android": "^7.0.0",
+        "cordova-browser": "^5.0.3",
+        "cordova-plugin-whitelist": "^1.3.3"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {}
+        },
+        "platforms": [
+            "browser",
+            "android"
+        ]
+    }
+}
