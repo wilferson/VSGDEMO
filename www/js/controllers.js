@@ -141,6 +141,8 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
+main_page($scope,$stateParams);
+
 
 }])
  

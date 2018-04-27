@@ -16,12 +16,25 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="http://veganshoppingapp.com/*" />
+    <allow-navigation href="*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+    </platform>
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <preference name="SplashScreen" value="res/screen/all/screen-loading.png" />
+    <preference name="SplashScreenDelay" value="60000" />
+    <platform name="browser">
+        <preference name="SplashScreen" value="res/screen/all/screen-loading.png" />
+        <preference name="SplashScreenDelay" value="30000" />
+        <preference name="SplashScreenBackgroundColor" value="white" />
+        <preference name="ShowSplashScreen" value="true" />
+        <preference name="SplashScreenWidth" value="600" />
+        <preference name="SplashScreenHeight" value="300" />
     </platform>
     <engine name="browser" spec="^5.0.3" />
     <engine name="android" spec="^7.0.0" />

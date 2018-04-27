@@ -15,4 +15,12 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="http://veganshoppingapp.com/*" />
+    <allow-navigation href="*" />
+    <preference name="SplashScreenDelay" value="30000" />
+    <preference name="SplashScreen" value="res/screen/all/screen-loading.png" />
+    <preference name="SplashScreenBackgroundColor" value="white" />
+    <preference name="ShowSplashScreen" value="true" />
+    <preference name="SplashScreenWidth" value="600" />
+    <preference name="SplashScreenHeight" value="300" />
 </widget>
