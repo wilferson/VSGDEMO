@@ -165,7 +165,7 @@ angular.module('app.routes', [])
     controller: 'introCtrl'
   })
 
-$urlRouterProvider.otherwise('/side-menu21/home')
+$urlRouterProvider.otherwise('/intro')
 
 
 });

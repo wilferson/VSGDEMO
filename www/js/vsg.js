@@ -2,10 +2,10 @@
 var vsgapp={
 	url:"http://veganshoppingapp.com",
 	database:{
-		categories:[],
-		offers:[],
-		images:[],
-		stores:[]
+		categories:{},
+		offers:{},
+		images:{},
+		stores:{}
 	},
 };
 
@@ -16,7 +16,13 @@ function constructPages()
    navigator.splashscreen.hide();	
 	  
 }
+function render_home($scope,$stateParams)
+{
+	$scope.dbcategories=vsgapp.categories;
+}
+ 
  function databaseLoaded(result)
+
  {
  	console.log(result);
  	window.localStorage.setItem("database",(result));
@@ -26,24 +32,24 @@ function constructPages()
 
  	//Categories
  		for (var i = temp.Categories.length - 1; i >= 0; i--) {
- 			database.categories[temp.Categories[i].id]=temp.Categories[i];
+ 			database.categories[temp.Categories[i].id.toString()]=temp.Categories[i];
  		}
 
  	//Offers
  	 		for (var i = temp.Offers.length - 1; i >= 0; i--) {
- 			database.offers[temp.Offers[i].id]=temp.Offers[i];
+ 			database.offers[temp.Offers[i].id.toString()]=temp.Offers[i];
  		}
 
 
  	//images
  		 		for (var i = temp.Images.length - 1; i >= 0; i--) {
- 			database.images[temp.Images[i].id]=temp.Images[i];
+ 			database.images[temp.Images[i].id.toString()]=temp.Images[i];
  		}
 
 
  	//stores
  		 		for (var i = temp.Stores.length - 1; i >= 0; i--) {
- 			database.stores[temp.Stores[i].id]=temp.Stores[i];
+ 			database.stores[temp.Stores[i].id.toString()]=temp.Stores[i];
  		}
 
  	//Populate landing page
@@ -80,7 +86,12 @@ document.addEventListener('deviceready', loadPage);
 
 function main_page($scope,$stateParams)
 {
-	console.log($scope);
-	console.log($stateParams);
-
+	alert();
 }
+function checkVariable( variable,callback) {
+
+   if (variable != null) {
+       // Here is your next action
+       callback();
+   }
+ }
