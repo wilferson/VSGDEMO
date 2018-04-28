@@ -13,7 +13,7 @@
          <div ng-if="category.parent_id === null">
             <ion-item ui-sref="menu.products({cat_id:category.id})" style="" class="item item-thumbnail-left">
                
-                   <img src="{{baseurl+database.images[category.image_id].url}}" ng-hide="category.image_id===null">
+                   <img src="{{baseurl+database.images[category.image_id].url}}" ng-if="category.image_id!=null">
                 
                 <h2>{{category.name}}</h2>
                 <p>{{category.description}}</p> 

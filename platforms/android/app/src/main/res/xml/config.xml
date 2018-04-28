@@ -8,6 +8,9 @@
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
     <name>VeganShopinGuide</name>
     <description>
       $app description
@@ -27,4 +30,6 @@
     <allow-navigation href="*" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="SplashScreen" value="res/screen/all/screen-loading.png" />
+    <preference name="SplashScreenDelay" value="60000" />
 </widget>

@@ -1,4 +1,4 @@
-<ion-view title="ProductName" id="page14" style="background-color: rgb(244, 244, 244);">
+<ion-view title="{{database.offers[off].title}}" id="page14" style="background-color: rgb(244, 244, 244);">
   <ion-nav-buttons side="right" class="has-header">
     <button class="button icon ion-heart"></button>
   </ion-nav-buttons>
@@ -11,47 +11,53 @@
       </ion-slides>
       <div id="productName-markdown9" style="text-align:center;" class="show-list-numbers-and-dots">
         <p style="color:#000000;">
-          <strong>Company Name</strong>
+          <strong>{{database.stores[database.offers[off].store_id].title}}</strong>
         </p>
       </div>
     </div>
     <div id="productName-container23" class="productInfo">
-      <h4 id="productName-heading4" style="color: rgb(0, 0, 0);">Product Name</h4>
+      <h4 id="productName-heading4" style="color: rgb(0, 0, 0);">{{database.offers[off].title}}</h4>
       <div id="productName-markdown11" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">Description of the product</p>
+        <p style="color:#000000;">Product's description</p>
 
-        <p style="color:#000000;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pharetra pharetra justo, ac malesuada dui dapibus id. Vivamus malesuada ac felis eget scelerisque. Nullam diam lectus, tristique non ultrices at, accumsan in ligula. Etiam tristique nulla
-          in leo varius congue. Suspendisse potenti. Nam neque lectus, fringilla quis purus eu, pellentesque pretium lacus. Curabitur sodales sollicitudin augue, eu feugiat erat pharetra vitae. Integer metus nunc, posuere in pretium sit amet, porttitor
-          at ante. Nunc id ipsum magna.</p>
+        <p style="color:#000000;"> {{database.offers[off].description}} </p>
       </div>
     </div>
     <div id="productName-container24" class="productImage">
       <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-        <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        <i ng-if="database.offers[off].image_id===null"class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        <img  ng-if="database.offers[off].image_id!=null" src="{{baseurl + database.images[database.offers[off].image_id].url}}" >
+
       </div>
     </div>
     <div id="productName-container27" class="moreCompany">
       <h3 id="productName-heading7" style="color: rgb(60, 60, 60); text-align: center;">More from this company</h3>
       <ion-list id="productName-list12">
-        <ion-item class="item-thumbnail-left" id="productName-list-item39" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-        </ion-item>
-        <ion-item class="item-thumbnail-left" id="productName-list-item50" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-        </ion-item>
-        <ion-item class="item-thumbnail-left" id="productName-list-item51" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-        </ion-item>
+        <div ng-repeat="offer in database.offers">
+
+         <div ng-if="offer.store_id === database.offers[off].store_id && offer.id !=off">
+            <ion-item ui-sref="menu.productName({off_id:offer.id})" style="" class="item item-thumbnail-left">
+               
+                   <img src="{{baseurl+database.images[offer.image_id].url}}" ng-hide="offer.image_id===null">
+                
+                <h2>{{offer.title}}</h2>
+                <p>{{offer.description}}</p> 
+            </ion-item>
+          </div>
+
+      </div>
       </ion-list>
     </div>
     <div id="productName-container35" class="moreCompany">
-      <h3 id="productName-heading20" style="color: rgb(60, 60, 60); text-align: center;">More from this company</h3>
-      <button id="productName-button32" class="button button-assertive button-block icon-left ion-ios-world">Visit website</button>
-      <button id="productName-button33" class="button button-positive button-block icon-left ion-ios-bookmarks">View recipes</button>
-      <button id="productName-button34" class="button button-positive button-block icon-left ion-android-pin">Where to buy</button>
+     <a href="{{surls[0]}}" ng-if="surls[0]!=undefined">
+      <button id="productName-button32"  class="button button-assertive button-block icon-left ion-ios-world">Visit website</button>
+     </a>
+     <a href="{{surls[1]}}" ng-if="surls[1]!=undefined">
+      <button id="productName-button33"  href="{{surls[1]}}" class="button button-positive button-block icon-left ion-ios-bookmarks">View recipes</button>
+     </a>
+     <a href="{{surls[2]}}" ng-if="surls[2]!=undefined" >
+      <button id="productName-button34" href="{{surls[2]}}" class="button button-positive button-block icon-left ion-android-pin">Where to buy</button>
+    </a>
     </div>
   </ion-content>
 </ion-view>

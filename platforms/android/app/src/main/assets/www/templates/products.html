@@ -1,25 +1,43 @@
-<ion-view title="Products" id="page12" style="background-color: rgb(242, 242, 242);">
+<ion-view title="{{database.categories[cat].name}}" id="page12" style="background-color: rgb(242, 242, 242);">
   <ion-content padding="false" class="has-header">
     <div id="products-container15" class="head">
       <div>
-        <img src="img/PyK3B4YRwqWRBHwQFnwo_logo.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+
+        <img ng-if="database.categories[cat].image_id===null" src="img/PyK3B4YRwqWRBHwQFnwo_logo.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+        <img ng-if="database.categories[cat].image_id!=null" src="{{baseurl+database.images[database.categories[cat].image_id].url}}" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+
+
       </div>
     </div>
     <div id="products-container22" class="categories">
       <div id="products-container16" class="ads transp creator-container"></div>
       <ion-list id="products-list10">
-        <ion-item class="item-thumbnail-left" id="products-list-item16" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-        </ion-item>
-        <ion-item class="item-thumbnail-left" id="products-list-item26" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-        </ion-item>
-        <ion-item class="item-thumbnail-left" id="products-list-item28" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-        </ion-item>
+        
+
+ <div ng-repeat="offer in database.offers">
+
+         <div ng-if="offer.category_id === cat">
+            <ion-item ui-sref="menu.productName({off_id:offer.id})" style="" class="item item-thumbnail-left">
+               
+                   <img src="{{baseurl+database.images[offer.image_id].url}}" ng-hide="offer.image_id===null">
+                
+                <h2>{{offer.title}}</h2>
+                <p>{{offer.description}}</p> 
+            </ion-item>
+          </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
       </ion-list>
     </div>
   </ion-content>

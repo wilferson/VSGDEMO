@@ -130,7 +130,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.productName', {
-    url: '/productName',
+    url: '/productName/:off_id',
     views: {
       'side-menu21': {
         templateUrl: 'templates/productName.html',

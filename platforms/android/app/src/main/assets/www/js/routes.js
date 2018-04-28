@@ -30,7 +30,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.products', {
-    url: '/products',
+    url: '/products/:cat_id',
     views: {
       'side-menu21': {
         templateUrl: 'templates/products.html',
@@ -130,7 +130,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.productName', {
-    url: '/productName',
+    url: '/productName/:off_id',
     views: {
       'side-menu21': {
         templateUrl: 'templates/productName.html',
@@ -165,7 +165,7 @@ angular.module('app.routes', [])
     controller: 'introCtrl'
   })
 
-$urlRouterProvider.otherwise('/side-menu21/home')
+$urlRouterProvider.otherwise('/intro')
 
 
 });

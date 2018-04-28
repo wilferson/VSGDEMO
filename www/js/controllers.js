@@ -118,11 +118,26 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('productNameCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('productNameCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
+function ($scope, $stateParams,$window) {
+	//Scope the database
+	db=$window.vsgapp.database;
+	$scope.database=db;
+	//get the product id
+	$scope.off=$stateParams.off_id;
+	//Scope the base url
+	$scope.baseurl=$window.vsgapp.url;
+	//Get and scope stores url
+	if(db.offers[$scope.off].store_id)
+	{
+	$scope.surls=db.stores[db.offers[$scope.off].store_id].url.split(";");
+	}else
+	{
+		$scope.surls=[];
+	}
+	console.log($scope.database.stores);
 
 }])
    
