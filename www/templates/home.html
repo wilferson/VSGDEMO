@@ -11,21 +11,17 @@
       <div ng-repeat="category in database.categories">
 
          <div ng-if="category.parent_id === null">
-          <ion-item  class="item-thumbnail-left" id="home-list-item38" ui-sref="menu.products()" style="">
-            <h2>{{category.name}}</h2>
-            <p>{{category.description}}</p>
-           
-        <div ng-if="category.image_id != null">
-          <ion-thumbnail item-start>
+            <ion-item ui-sref="" style="" class="item item-thumbnail-left">
+                 
+                   <img src="{{baseurl+database.images[category.image_id].url}}" >
+                
+                <h2>{{category.name}}</h2>
+                <p>{{category.description}}</p> 
+            </ion-item>
+          </div>
 
-               <img src="{{baseurl+database.images[category.image_id].url}}">
-          </ion-thumbnail>
-        </div>
-          </ion-item>
-        
-     
       </div>
-      </div>
+
       </ion-list>
 
     </div>
