@@ -9872,3 +9872,14 @@ span[aria-label="First name"] {
 
 ion-view, .pane, .view {
   background-color: #3C3C3C; }
+  /*
+Wilferson codes.
+  */
+.item ion-thumbnail {
+    min-width: 5rem;    
+    min-height: 5rem;
+    img {
+        max-width: 5rem;    
+        min-width: 5rem;
+    }
+}

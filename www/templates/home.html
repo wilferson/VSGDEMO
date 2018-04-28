@@ -8,12 +8,24 @@
     <div id="home-container20" class="categories">
       <div id="home-container21" class="ads transp creator-container"></div>
       <ion-list id="home-list11">
-  
-        <ion-item ng-repeat="category in categories" class="item-thumbnail-left" id="home-list-item38" ui-sref="menu.products()" style="">
-        <h2>{{category.name}}</h2>
-          <p>{{category.description}}</p>
-        </ion-item>
+      <div ng-repeat="category in database.categories">
 
+         <div ng-if="category.parent_id === null">
+          <ion-item  class="item-thumbnail-left" id="home-list-item38" ui-sref="menu.products()" style="">
+            <h2>{{category.name}}</h2>
+            <p>{{category.description}}</p>
+           
+        <div ng-if="category.image_id != null">
+          <ion-thumbnail item-start>
+
+               <img src="{{baseurl+database.images[category.image_id].url}}">
+          </ion-thumbnail>
+        </div>
+          </ion-item>
+        
+     
+      </div>
+      </div>
       </ion-list>
 
     </div>

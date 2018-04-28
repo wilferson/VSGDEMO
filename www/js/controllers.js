@@ -5,8 +5,9 @@ angular.module('app.controllers', [])
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams,$window) {
 
-	$scope.categories=$window.vsgapp.database.categories;
-	console.log($scope.categories);
+	$scope.database=$window.vsgapp.database;
+	$scope.baseurl=$window.vsgapp.url;
+	console.log($scope.database);
 }])
    
 .controller('favoritesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
