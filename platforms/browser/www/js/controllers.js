@@ -7,7 +7,7 @@ function ($scope, $stateParams,$window) {
 
 	$scope.database=$window.vsgapp.database;
 	$scope.baseurl=$window.vsgapp.url;
-	console.log($scope.database);
+
 }])
    
 .controller('favoritesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -18,11 +18,15 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('productsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('productsCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-alert();
+function ($scope, $stateParams,$window) {
+
+$scope.database=$window.vsgapp.database;
+$scope.baseurl=$window.vsgapp.url;
+$scope.cat=$stateParams.cat_id;
+
 
 }])
    
@@ -30,7 +34,6 @@ alert();
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
-
 
 }])
    

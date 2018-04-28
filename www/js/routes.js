@@ -30,7 +30,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.products', {
-    url: '/products',
+    url: '/products/:cat_id',
     views: {
       'side-menu21': {
         templateUrl: 'templates/products.html',
