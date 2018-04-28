@@ -26,6 +26,7 @@ function ($scope, $stateParams,$window) {
 $scope.database=$window.vsgapp.database;
 $scope.baseurl=$window.vsgapp.url;
 $scope.cat=$stateParams.cat_id;
+	$scope.baseurl=$window.vsgapp.url;
 
 
 }])
