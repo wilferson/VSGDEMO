@@ -71,17 +71,17 @@ function render_home($scope,$stateParams)
  }
  function databaseNotLoaded(result)
  {
- 	alert(result);	
+ 	alert("Networking Error, try reestarting the app.");	
  }
 function loadPage()
 {
 	//Get user data from the localstorage
 	vsgapp.email=localStorage.getItem("email");
-	if(vsgapp.email==null)
+	if(vsgapp.email)
 	{
 		//attemp authentiaction...
 		auth=localStorage.getItem("token");
-		
+		vsgapp.auth=auth;
 		$.ajax({url: vsgapp.url+"/api/login", 
 		type:'POST',
 		data:{
@@ -100,7 +100,8 @@ function loadPage()
 				vsgapp.favorites=response.user.favorites;	
 				vsgapp.location=response.user.location;
 				vsgapp.usersex=response.user.sex;
-
+				vsgapp.phone=response.user.phone;
+				vsgapp.gender=response.user.sex;
 			}
 		},
 	   
@@ -121,11 +122,8 @@ function loadPage()
 
 	{
 		vsgapp.database=JSON.parse(window.sessionStorage.getItem("database"));
-	
- 
 
-
-constructPages();
+	constructPages();
 	}
 
 
@@ -152,7 +150,7 @@ function initFavorites(result)
 	{
 		$.ajax({url: vsgapp.url+"/api/getfavorites", 
 		success: initFavorites,
-		failed: function(){alert("Comunication Error.");},
+		error: function(){alert("Comunication Error.");},
 		type:'POST',
 		data:{
 			'email':vsgapp.email,
@@ -162,6 +160,50 @@ function initFavorites(result)
 		});
 
 	}
+}
+function loginSucces(result)
+{
+	//Server response with a token that can be stored into the localstoragedatabase
+	response=JSON.parse(result);
+	if (response.success)
+	{
+	window.localStorage.setItem("token")=result.token;
+	location.reload();
+	navigator.splashscreen.hide();	
+	}
+
+}
+function logout()
+{
+	if (window.state==null)
+	{
+
+	}
+	else
+	{
+		window.localStorage.setItem("token","");
+		vsgapp.loged=false;
+		vsgapp.favorites=null;
+		state.go('intro');
+	}
+}
+function login(email,password)
+{
+	//Request a token.
+	navigator.splashscreen.show();
+	$.ajax({url: vsgapp.url+"/api/auth", 
+		success: loginSucces,
+		error: function(result){alert("Network error");
+		navigator.splashscreen.hide();
+		},
+		type:'POST',
+		data:{
+			'email':email,
+			'password':password,
+			async:true,
+		}
+		});
+
 }
 
 function checkVariable( variable,callback) {

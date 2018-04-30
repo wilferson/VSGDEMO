@@ -1,4 +1,4 @@
-<ion-view title="Login" hide-nav-bar="true" hide-back-button="true" cache-view="false" id="page5" style="background-color: rgb(156, 156, 168);">
+<ion-view title="Login" hide-nav-bar="false" hide-back-button="false" cache-view="true" id="page5" style="background-color: rgb(156, 156, 168);">
   <ion-content padding="false" class="manual-ios-statusbar-padding" scroll="true">
     <div id="login-container7" class="head">
       <div>
@@ -12,17 +12,17 @@
       <ion-list id="login-list3" class="login">
         <label class="item item-input loginf transp" id="login-input7" name="email">
           <span class="input-label">Email</span>
-          <input placeholder="" type="email">
+          <input placeholder="{{vsgapp.email}}" ng-model="email" type="email">
         </label>
         <label class="item item-input loginf transp" id="login-input8" name="password">
           <span class="input-label">Password</span>
-          <input placeholder="" type="password">
+          <input placeholder="" ng-model="password" type="password">
         </label>
       </ion-list>
       <a ui-sref="recoverPassword()" id="login-button4" class="button button-light button-block button-clear">Forgot password?</a>
     </form>
     <div id="login-container10">
-      <button id="login-button2" style="border-radius:5px 5px 5px 5px;" class="button button-stable button-block mid">Log in</button>
+      <button id="login-button2" style="border-radius:5px 5px 5px 5px;" ng-click="postLogin(email,password)" class="button button-stable button-block mid">Log in</button>
       <button id="login-button5" style="border-radius:5px 5px 5px 5px;" class="button button-positive button-block icon-left ion-social-facebook mid">Log in with Facebook</button>
       <button id="login-button18" style="border-radius:5px 5px 5px 5px;" class="button button-assertive button-block icon-left ion-social-google-outline mid">Log in with Google</button>
       <a ui-sref="signup()" id="login-button3" style="color:#F2F2F2;" class="button button-light button-block button-clear">Create an account</a>

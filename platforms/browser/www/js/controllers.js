@@ -23,15 +23,9 @@ function ($scope, $stateParams,$window,$state) {
 		return;
 	}
 	
-	if(vsgapp.favorites==null)
-	{
-		$window.getFavorites();
-		return;
-	}
-	else
-	{
-		$scope.favorites=vsgapp.favorites;
-	}
+	$scope.favorites=$window.vsgapp.favorites;
+	$scope.db=$window.vsgapp.database;
+	$scope.baseurl=$window.vsgapp.url;
 }])
    
 .controller('productsCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -70,10 +64,21 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('settingsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('settingsCtrl', ['$scope', '$stateParams','$window','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,$window,$state) {
+
+	if(!$window.vsgapp.loged)
+{
+	alert("You need to login to continue.")
+	$state.go('login');
+}
+$scope.loged=$window.vsgapp.loged;
+$window.state=$state;
+$scope.logout=function(){
+	$window.logout();
+}
 
 
 }])
@@ -102,11 +107,17 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('loginCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope', '$stateParams','$window','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,$window,$state) {
 
+	$scope.vsgapp=$window.vsgapp;
+	$scope.postLogin=$window.login;
+	if ($window.vsgapp.loged)
+	{
+		$window.history.back();
+	}
 
 }])
    

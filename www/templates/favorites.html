@@ -6,32 +6,21 @@
         <p style="color:#000000;">
           <strong>Slide</strong> to see options</p>
       </div>
-      <ion-list id="favorites-list14">
-        <ion-item class="item-thumbnail-left item-icon-right" id="favorites-list-item23" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-          <i class="icon ion-android-arrow-dropright icon-accessory"></i>
-          <ion-option-button class="button-assertive">Delete</ion-option-button>
-        </ion-item>
-        <ion-item class="item-thumbnail-left item-icon-right" id="favorites-list-item30" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-          <i class="icon ion-android-arrow-dropright icon-accessory"></i>
-          <ion-option-button class="button-assertive">Delete</ion-option-button>
-        </ion-item>
-        <ion-item class="item-thumbnail-left item-icon-right" id="favorites-list-item37" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-          <i class="icon ion-android-arrow-dropright icon-accessory"></i>
-          <ion-option-button class="button-assertive">Delete</ion-option-button>
-        </ion-item>
-        <ion-item class="item-thumbnail-left item-icon-right" id="favorites-list-item42" ui-sref="menu.productName()" style="">
-          <h2>Product name</h2>
-          <p>Product description</p>
-          <i class="icon ion-android-arrow-dropright icon-accessory"></i>
-          <ion-option-button class="button-assertive">Delete</ion-option-button>
-        </ion-item>
+      <ion-list id="favorites-list14" ng-if="hasfavorites">
+        
+        <div ng-repeat="fav in favorites">
+          <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName(fav)" style="">
+            <img ng-show="db.offers[fav].image_id" src="{{baseurl+db.images[db.offers[fav].image_id]}}">
+            <h2>{{db.offers[fav].name}}</h2>
+            <p>{{db.offers[fav].description}}</p>
+            <i class="icon ion-android-arrow-dropright icon-accessory"></i>
+            <ion-option-button class="button-assertive" ng-click="deleteFav(fav)">Delete</ion-option-button>
+          </ion-item>
+        </div>
       </ion-list>
+      <p ng-if="favorites==null">
+        You don't have any favorites, tray adding some and come back.
+      </p>
     </div>
   </ion-content>
 </ion-view>
