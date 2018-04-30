@@ -25,8 +25,8 @@
     </div>
     <div id="productName-container24" class="productImage">
       <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-        <i ng-if="database.offers[off].image_id===null"class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-        <img  ng-if="database.offers[off].image_id!=null" src="{{baseurl + database.images[database.offers[off].image_id].url}}" >
+        <i ng-if="database.images[database.stores[database.offers[off].store_id].image_id].url==null" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        <img  ng-if="database.images[database.stores[database.offers[off].store_id].image_id].url" src="{{baseurl + database.images[database.stores[database.offers[off].store_id].image_id].url}}" >
 
       </div>
     </div>

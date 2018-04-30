@@ -14,18 +14,28 @@ function ($scope, $stateParams,$window) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams,$window,$state) {
-
+	$window.loadProfile($scope);
 	vsgapp=$window.vsgapp;
+	$scope.db=$window.vsgapp.database;
+	$scope.baseurl=$window.vsgapp.url;
+	
 	if(vsgapp.loged==false)
 	{
 		alert("You need to login in order to use the favorites menu.");
 		$state.go ('login');
 		return;
 	}
+
+	$scope.isEmpty=function(obj) {
+		for(var prop in obj) {
+			if(obj.hasOwnProperty(prop))
+				return false;
+		}
+		return true;
+	}
 	
-	$scope.favorites=$window.vsgapp.favorites;
-	$scope.db=$window.vsgapp.database;
-	$scope.baseurl=$window.vsgapp.url;
+	
+	
 }])
    
 .controller('productsCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -139,7 +149,7 @@ function ($scope, $stateParams,$window,$state) {
 	$window.state=$state;
 	$scope.login ={email:"",
 					password:""};
-					
+
 	$scope.postLogin=function(){
 	
 		$window.login($scope.login.email,$scope.login.password)
@@ -198,10 +208,20 @@ function ($scope, $stateParams,$window,$state) {
 			return;
 		}
 		$.ajax({url: vsgapp.url+"/api/fav", 
-		success: function(){
-			alert("<3");
-			$state.go('menu.home');
-			$window.location.reload();
+		success: function(result){
+			switch (result) {
+				case "S_OK":
+					alert("<3");
+					break;
+				case "D_OK":
+					alert(":(");
+
+				default:
+					break;
+			}
+		
+			$window.history.back();
+			
 		},
 		error: function(result){alert("Network error");
 		

@@ -6,11 +6,12 @@
         <p style="color:#000000;">
           <strong>Slide</strong> to see options</p>
       </div>
-      <ion-list id="favorites-list14" ng-if="hasfavorites">
+      <ion-list id="favorites-list14" ng-if="favorites">
         
         <div ng-repeat="fav in favorites">
-          <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName(fav)" style="">
-            <img ng-show="db.offers[fav.offer_id].image_id" src="{{baseurl+db.images[db.offers[fav].image_id]}}">
+          
+          <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName({off_id:fav.offer_id})" style="">
+            <img ng-show="db.offers[fav.offer_id].image_id" src="{{baseurl+db.images[db.offers[fav.offer_id].image_id].url}}">
             <h2>{{db.offers[fav.offer_id].title}}</h2>
             <p>{{db.offers[fav.offer_id].description}}</p>
             <i class="icon ion-android-arrow-dropright icon-accessory"></i>
@@ -18,7 +19,7 @@
           </ion-item>
         </div>
       </ion-list>
-      <p ng-if="favorites==null">
+      <p ng-if="isEmpty(favorites)">
         You don't have any favorites, tray adding some and come back.
       </p>
     </div>

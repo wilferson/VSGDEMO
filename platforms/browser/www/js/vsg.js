@@ -1,7 +1,7 @@
 
 var vsgapp={
 	url:"http://veganshoppingapp.com",
-	favorites:null,
+	favorites:{},
 	loged:false,
 	username:null,
 	password:null,
@@ -74,7 +74,7 @@ function render_home($scope,$stateParams)
  {
  	alert("Networking Error, try reestarting the app.");	
  }
- function loadProfile()
+ function loadProfile(safecallback)
  {
 	 	//Get user data from the localstorage
 	vsgapp.auth=localStorage.getItem("token");
@@ -98,12 +98,20 @@ function render_home($scope,$stateParams)
 				vsgapp.usertype=response.user.type;
 				vsgapp.name=response.user.name;
 				vsgapp.lastname=response.user.lastname;
-				vsgapp.favorites=response.user.favorites;
-				console.log(vsgapp);
+				temp=JSON.parse(response.user.favorites);
+				vsgapp.favorites={};
+				for (var i = temp.length - 1; i >= 0; i--) {
+					vsgapp.favorites[temp[i].id.toString()]=temp[i];
+				}
 				vsgapp.location=response.user.location;
 				vsgapp.usersex=response.user.sex;
 				vsgapp.phone=response.user.phone;
 				vsgapp.gender=response.user.sex;
+				if(safecallback)
+				{	console.log(safecallback);
+					safecallback.favorites=vsgapp.favorites;
+					safecallback.$apply();
+				}
 			}
 		},
 	   
