@@ -5,41 +5,41 @@
   <ion-content padding="true" class="has-header">
     <form id="signup-form2" class="list padtwen">
       <ion-list id="signup-list2">
-        <label class="item item-input" id="signup-input3" name="firstName">
+        <label class="item item-input" id="signup-input3"  name="firstName">
           <span class="input-label">First name</span>
-          <input placeholder="" type="text">
+          <input placeholder="" ng-model="name" type="text">
         </label>
         <label class="item item-input" id="signup-input6" name="lastName">
           <span class="input-label">Last name</span>
-          <input placeholder="" type="text">
+          <input placeholder="" ng-model="lastanme" type="text">
         </label>
         <label class="item item-input" id="signup-input4" name="email">
           <span class="input-label">Email</span>
-          <input placeholder="" type="email">
+          <input placeholder="" ng-model="email" type="email">
         </label>
         <label class="item item-input" id="signup-input10" name="phone">
           <span class="input-label">Phone</span>
-          <input placeholder="" type="tel">
+          <input placeholder="" ng-model="phone" type="tel">
         </label>
         <label class="item item-input" id="signup-input5" name="password">
           <span class="input-label">Password</span>
-          <input placeholder="" type="password">
+          <input placeholder="" type="password" ng-model="password">
         </label>
-        <label class="item item-input" id="signup-input9" name="rePassword">
+        <label class="item item-input" id="signup-input9" name="rePassword" >
           <span class="input-label">Repeat password</span>
-          <input placeholder="" type="password">
+          <input placeholder="" type="password" ng-model="password2">
         </label>
         <label class="item item-input" id="signup-input11" name="birthday">
           <span class="input-label">Birthday</span>
-          <input placeholder="" type="date">
+          <input placeholder="" type="date" ng-model="birthday">
         </label>
       </ion-list>
       <label class="item item-select" id="signup-select1" name="gender">
         <span class="input-label">Gender</span>
-        <select>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+        <select ng-model="sex">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other/Not Specified ">Other</option>
         </select>
       </label>
       <div class="spacer" style="width: 283px; height: 9px;"></div>
@@ -48,10 +48,13 @@
         <p style="margin-top:0px;color:#000000;font-size:11px;">By clicking sign up you are agreeing to our
           <a href="/privacy">terms of use and privacy policy</a>.</p>
       </div>
-      <button id="signup-button1" class="button button-balanced button-block">Sign up</button>
+      <button id="signup-button1" class="button button-balanced button-block" ng-click="signup()">Sign up</button>
+      <div class="HEREWILFERSONTHISISTHEONETHATHIDESTHESOCIALLOGIN" ng-show="false" >
       <h5 id="signup-heading19" style="color: rgb(0, 0, 0); text-align: center;">OR</h5>
+    
       <button id="signup-button21" class="button button-positive button-block icon-left ion-social-facebook">Sign up with Facebook</button>
       <button id="signup-button19" class="button button-assertive button-block icon-left ion-social-google-outline">Sign up with Google</button>
+    </div>
     </form>
   </ion-content>
 </ion-view>

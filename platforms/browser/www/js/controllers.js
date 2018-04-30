@@ -91,11 +91,19 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('signupCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('signupCtrl', ['$scope', '$stateParams','$window', '$state' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,$window,$state) {
 
+	$scope.signup=function()
+	{
+		signupdata={'email':$scope.email,
+					 'password':$scope.password,};
+	console.log(signupdata);
+	
+		}
+		
 
 }])
    
@@ -113,7 +121,11 @@ function ($scope, $stateParams) {
 function ($scope, $stateParams,$window,$state) {
 
 	$scope.vsgapp=$window.vsgapp;
-	$scope.postLogin=$window.login;
+	$window.state=$state;
+	$scope.postLogin=function(){
+	
+		$window.login($scope.email,$scope.password)
+	};
 	if ($window.vsgapp.loged)
 	{
 		$window.history.back();

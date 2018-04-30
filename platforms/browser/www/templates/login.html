@@ -5,26 +5,28 @@
         <img src="img/x3fKN8ZMRN25PwC7OuIq_logo.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
       </div>
     </div>
-    <form id="login-form3" class="list greym">
+    <form id="login-form3" name="data"class="list greym">
       <div id="login-container8">
         <h3 id="login-heading1" style="color: rgb(242, 242, 242); text-align: center;" class="padtwen">LOG IN</h3>
       </div>
       <ion-list id="login-list3" class="login">
         <label class="item item-input loginf transp" id="login-input7" name="email">
           <span class="input-label">Email</span>
-          <input placeholder="{{vsgapp.email}}" ng-model="email" type="email">
+          <input placeholder="{{vsgapp.email}}" type="text" ng-model="email">
         </label>
-        <label class="item item-input loginf transp" id="login-input8" name="password">
+        <label class="item item-input loginf transp" id="login-input8" name="text">
           <span class="input-label">Password</span>
-          <input placeholder="" ng-model="password" type="password">
+          <input placeholder="" type="password" ng-model="password" >
         </label>
       </ion-list>
+    
       <a ui-sref="recoverPassword()" id="login-button4" class="button button-light button-block button-clear">Forgot password?</a>
     </form>
+   
     <div id="login-container10">
-      <button id="login-button2" style="border-radius:5px 5px 5px 5px;" ng-click="postLogin(email,password)" class="button button-stable button-block mid">Log in</button>
-      <button id="login-button5" style="border-radius:5px 5px 5px 5px;" class="button button-positive button-block icon-left ion-social-facebook mid">Log in with Facebook</button>
-      <button id="login-button18" style="border-radius:5px 5px 5px 5px;" class="button button-assertive button-block icon-left ion-social-google-outline mid">Log in with Google</button>
+      <button id="login-button2" ng-disabled="email.$error.email" style="border-radius:5px 5px 5px 5px;" ng-click="postLogin()" class="button button-stable button-block mid">Log in</button>
+      <button id="login-button5" ng-show="false" style="border-radius:5px 5px 5px 5px;" class="button button-positive button-block icon-left ion-social-facebook mid">Log in with Facebook</button>
+      <button id="login-button18" ng-show="false" style="border-radius:5px 5px 5px 5px;" class="button button-assertive button-block icon-left ion-social-google-outline mid">Log in with Google</button>
       <a ui-sref="signup()" id="login-button3" style="color:#F2F2F2;" class="button button-light button-block button-clear">Create an account</a>
     </div>
   </ion-content>

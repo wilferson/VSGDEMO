@@ -34,8 +34,9 @@ function render_home($scope,$stateParams)
  {
  	
  	
- 	temp=JSON.parse(result);
- 	database=vsgapp.database;
+	 temp=JSON.parse(result);
+
+ 	 database=vsgapp.database;
  	//parse the database
 
  	//Categories
@@ -59,7 +60,7 @@ function render_home($scope,$stateParams)
  		 		for (var i = temp.Stores.length - 1; i >= 0; i--) {
  			database.stores[temp.Stores[i].id.toString()]=temp.Stores[i];
  		}
-		
+		console.log(database);
 	 //Populate landing page
 	 window.sessionStorage.setItem("database", JSON.stringify(database));
 	 
@@ -82,7 +83,7 @@ function loadPage()
 		//attemp authentiaction...
 		auth=localStorage.getItem("token");
 		vsgapp.auth=auth;
-		$.ajax({url: vsgapp.url+"/api/login", 
+		$.ajax({url: vsgapp.url+"/api/auth", 
 		type:'POST',
 		data:{
 			'email':vsgapp.email,
@@ -171,6 +172,12 @@ function loginSucces(result)
 	location.reload();
 	navigator.splashscreen.hide();	
 	}
+	else{
+		alert(response.error);
+		navigator.splashscreen.hide();
+		location.reload();
+		
+	}
 
 }
 function logout()
@@ -191,7 +198,7 @@ function login(email,password)
 {
 	//Request a token.
 	navigator.splashscreen.show();
-	$.ajax({url: vsgapp.url+"/api/auth", 
+	$.ajax({url: vsgapp.url+"/api/login", 
 		success: loginSucces,
 		error: function(result){alert("Network error");
 		navigator.splashscreen.hide();
@@ -200,11 +207,13 @@ function login(email,password)
 		data:{
 			'email':email,
 			'password':password,
-			async:true,
+		
 		}
 		});
 
 }
+
+
 
 function checkVariable( variable,callback) {
 
