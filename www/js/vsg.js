@@ -1,6 +1,8 @@
 
 var vsgapp={
 	url:"http://veganshoppingapp.com",
+	favorites=null,
+	loged=false,
 	database:{
 		categories:{},
 		offers:{},
@@ -24,7 +26,7 @@ function render_home($scope,$stateParams)
  function databaseLoaded(result)
 
  {
- 	console.log(result);
+ 	
  	window.localStorage.setItem("database",(result));
  	temp=JSON.parse(result);
  	database=vsgapp.database;
@@ -86,8 +88,36 @@ document.addEventListener('deviceready', loadPage);
 
 function main_page($scope,$stateParams)
 {
-	alert();
+
 }
+
+
+function initFavorites(result)
+{
+
+	if(result)
+	{
+		console.log(result);
+
+
+
+	}
+
+	if (vsgapp.email)
+	{
+		$.ajax({url: vsgapp.url+"/api/getfavorites", 
+		success: initFavorites,
+		failed: databaseNotLoaded,
+		type:'POST',
+		data:{
+			'email':vsgapp.email,
+			'password':vsgapp.password,
+		}
+		});
+
+	}
+}
+
 function checkVariable( variable,callback) {
 
    if (variable != null) {
