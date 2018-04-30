@@ -11,7 +11,7 @@
         <div ng-repeat="fav in favorites">
           <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName(fav)" style="">
             <img ng-show="db.offers[fav.offer_id].image_id" src="{{baseurl+db.images[db.offers[fav].image_id]}}">
-            <h2>{{db.offers[fav.offer_id].name}}</h2>
+            <h2>{{db.offers[fav.offer_id].title}}</h2>
             <p>{{db.offers[fav.offer_id].description}}</p>
             <i class="icon ion-android-arrow-dropright icon-accessory"></i>
             <ion-option-button class="button-assertive" ng-click="deleteFav(fav)">Delete</ion-option-button>

@@ -74,20 +74,20 @@ function render_home($scope,$stateParams)
  {
  	alert("Networking Error, try reestarting the app.");	
  }
-function loadPage()
-{
-	//Get user data from the localstorage
-	vsgapp.email=localStorage.getItem("email");
-	if(vsgapp.email)
+ function loadProfile()
+ {
+	 	//Get user data from the localstorage
+	vsgapp.auth=localStorage.getItem("token");
+	if(vsgapp.auth)
 	{
 		//attemp authentiaction...
-		auth=localStorage.getItem("token");
-		vsgapp.auth=auth;
+		email=localStorage.getItem("email");
+		vsgapp.email=email;
 		$.ajax({url: vsgapp.url+"/api/auth", 
 		type:'POST',
 		data:{
 			'email':vsgapp.email,
-			'token':auth,
+			'token':vsgapp.auth,
 		},
 		success: function(result)
 		{
@@ -98,7 +98,8 @@ function loadPage()
 				vsgapp.usertype=response.user.type;
 				vsgapp.name=response.user.name;
 				vsgapp.lastname=response.user.lastname;
-				vsgapp.favorites=response.user.favorites;	
+				vsgapp.favorites=response.user.favorites;
+				console.log(vsgapp);
 				vsgapp.location=response.user.location;
 				vsgapp.usersex=response.user.sex;
 				vsgapp.phone=response.user.phone;
@@ -109,6 +110,10 @@ function loadPage()
 		});
 	}
 
+ }
+function loadPage()
+{
+	loadProfile();
 	//Our databes object does not exist so create it
 	if (window.sessionStorage.getItem("database")==null)
 	{
@@ -168,14 +173,14 @@ function loginSucces(result)
 	response=JSON.parse(result);
 	if (response.success)
 	{
-	window.localStorage.setItem("token")=result.token;
-	location.reload();
-	navigator.splashscreen.hide();	
+	window.localStorage.setItem("token",response.token);
+	loadProfile();
+	navigator.splashscreen.hide();
+	window.history.back();
 	}
 	else{
 		alert(response.error);
 		navigator.splashscreen.hide();
-		location.reload();
 		
 	}
 
@@ -197,6 +202,8 @@ function logout()
 function login(email,password)
 {
 	//Request a token.
+	localStorage.setItem("email",email);
+	vsgapp.email=email;
 	navigator.splashscreen.show();
 	$.ajax({url: vsgapp.url+"/api/login", 
 		success: loginSucces,
@@ -245,6 +252,7 @@ function checkVariable( variable,callback) {
 		alert("Thank you for your registration.");
 		vsgapp.token=response.token;
 		localStorage.setItem("token",response.token);
+		window.location.reload();
 	 }else
 	 {
 		alert(response.error);

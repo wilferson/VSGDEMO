@@ -139,6 +139,7 @@ function ($scope, $stateParams,$window,$state) {
 	$window.state=$state;
 	$scope.login ={email:"",
 					password:""};
+					
 	$scope.postLogin=function(){
 	
 		$window.login($scope.login.email,$scope.login.password)
