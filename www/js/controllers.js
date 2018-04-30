@@ -137,9 +137,11 @@ function ($scope, $stateParams,$window,$state) {
 
 	$scope.vsgapp=$window.vsgapp;
 	$window.state=$state;
+	$scope.login ={email:"",
+					password:""};
 	$scope.postLogin=function(){
 	
-		$window.login($scope.email,$scope.password)
+		$window.login($scope.login.email,$scope.login.password)
 	};
 	if ($window.vsgapp.loged)
 	{
@@ -185,6 +187,29 @@ function ($scope, $stateParams,$window,$state) {
 	//Scope the base url
 	$scope.baseurl=$window.vsgapp.url;
 	//Get and scope stores url
+	$scope.favorites=$window.vsgapp.favorites;
+	$scope.favClick=function(off)
+	{
+		if($window.vsgapp.loged==false)
+		{
+			alert("Only registred users can use this feature.");
+			$state.go("login");
+			return;
+		}
+		$.ajax({url: vsgapp.url+"/api/fav", 
+		success: function(){
+			alert("<3");
+			$state.go('menu.home');
+			$window.location.reload();
+		},
+		error: function(result){alert("Network error");
+		
+		},
+		type:'POST',
+		data:{off:off,
+			token:$window.vsgapp.auth},
+		});
+	}
 	if(db.offers[$scope.off]==null)
 	{}else{
 	if(db.offers[$scope.off].store_id)
