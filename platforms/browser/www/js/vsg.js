@@ -224,6 +224,8 @@ function checkVariable( variable,callback) {
  }
  function signup(data)
  {
+	localStorage.setItem("email",data.email);
+	vsgapp.email=data.email;
 	navigator.splashscreen.show();
 	$.ajax({url: vsgapp.url+"/api/signup", 
 	success: signupSucces,
@@ -237,7 +239,16 @@ function checkVariable( variable,callback) {
 
  function signupSucces(result)
  {
-	 console.log(result);
+	 response=JSON.parse(result);
+	 if (response.success)
+	 {
+		alert("Thank you for your registration.");
+		vsgapp.token=response.token;
+		localStorage.setItem("token",response.token);
+	 }else
+	 {
+		alert(response.error);
+	 }
 	 navigator.splashscreen.hide();
 	 location.reload();
  }
