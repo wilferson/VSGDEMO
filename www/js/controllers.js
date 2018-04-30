@@ -23,14 +23,15 @@ function ($scope, $stateParams,$window,$state) {
 		return;
 	}
 	
-	if(favorites==null)
+	if(vsgapp.favorites==null)
 	{
 		$window.getFavorites();
 		return;
 	}
-	
-
-
+	else
+	{
+		$scope.favorites=vsgapp.favorites;
+	}
 }])
    
 .controller('productsCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -133,10 +134,11 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('productNameCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('productNameCtrl', ['$scope', '$stateParams','$window','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams,$window) {
+function ($scope, $stateParams,$window,$state) {
+	
 	//Scope the database
 	db=$window.vsgapp.database;
 	$scope.database=db;
@@ -145,6 +147,8 @@ function ($scope, $stateParams,$window) {
 	//Scope the base url
 	$scope.baseurl=$window.vsgapp.url;
 	//Get and scope stores url
+	if(db.offers[$scope.off]==null)
+	{}else{
 	if(db.offers[$scope.off].store_id)
 	{
 	$scope.surls=db.stores[db.offers[$scope.off].store_id].url.split(";");
@@ -152,8 +156,9 @@ function ($scope, $stateParams,$window) {
 	{
 		$scope.surls=[];
 	}
-	console.log($scope.database.stores);
-
+}
+	//register navigation fucntion
+	
 }])
    
 .controller('aboutUsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller

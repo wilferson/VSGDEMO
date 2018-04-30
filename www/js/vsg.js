@@ -1,8 +1,10 @@
 
 var vsgapp={
 	url:"http://veganshoppingapp.com",
-	favorites=null,
-	loged=false,
+	favorites:null,
+	loged:false,
+	username:null,
+	password:null,
 	database:{
 		categories:{},
 		offers:{},
@@ -10,12 +12,16 @@ var vsgapp={
 		stores:{}
 	},
 };
+var origAlert=alert;
 
  
 function constructPages()
 {
 //Done loading, remove Splash
+//Reconstruct pages and 
+
    navigator.splashscreen.hide();	
+
 	  
 }
 function render_home($scope,$stateParams)
@@ -27,7 +33,7 @@ function render_home($scope,$stateParams)
 
  {
  	
- 	window.localStorage.setItem("database",(result));
+ 	
  	temp=JSON.parse(result);
  	database=vsgapp.database;
  	//parse the database
@@ -53,8 +59,10 @@ function render_home($scope,$stateParams)
  		 		for (var i = temp.Stores.length - 1; i >= 0; i--) {
  			database.stores[temp.Stores[i].id.toString()]=temp.Stores[i];
  		}
-
- 	//Populate landing page
+		
+	 //Populate landing page
+	 window.sessionStorage.setItem("database", JSON.stringify(database));
+	 
  	constructPages();
 
 	
@@ -63,24 +71,62 @@ function render_home($scope,$stateParams)
  }
  function databaseNotLoaded(result)
  {
- 	alert(result);	
+ 	alert("Networking Error, try reestarting the app.");	
  }
 function loadPage()
 {
-	/*
-	//Our databes object does not exist so create it
-	if (window.localStorage.getItem("database")==null)
+	//Get user data from the localstorage
+	vsgapp.email=localStorage.getItem("email");
+	if(vsgapp.email)
 	{
-		//*/
+		//attemp authentiaction...
+		auth=localStorage.getItem("token");
+		
+		$.ajax({url: vsgapp.url+"/api/login", 
+		type:'POST',
+		data:{
+			'email':vsgapp.email,
+			'token':auth,
+		},
+		success: function(result)
+		{
+			response=JSON.parse(result);
+			if(response.success)
+			{
+				vsgapp.loged=response.success;
+				vsgapp.usertype=response.user.type;
+				vsgapp.name=response.user.name;
+				vsgapp.lastname=response.user.lastname;
+				vsgapp.favorites=response.user.favorites;	
+				vsgapp.location=response.user.location;
+				vsgapp.usersex=response.user.sex;
+				vsgapp.phone=response.user.phone;
+				vsgapp.gender=response.user.sex;
+
+			}
+		},
+	   
+		});
+	}
+
+	//Our databes object does not exist so create it
+	if (window.sessionStorage.getItem("database")==null)
+	{
+		
 
 		 $.ajax({url: vsgapp.url+"/api/getall", 
 		 	success: databaseLoaded,
-		 	failed: databaseNotLoaded,
+			 failed: databaseNotLoaded,
+			
 		 	});
+	}else
 
-		/*
+	{
+		vsgapp.database=JSON.parse(window.sessionStorage.getItem("database"));
+
+	constructPages();
 	}
-	//*/
+
 
 
 }
@@ -97,21 +143,20 @@ function initFavorites(result)
 
 	if(result)
 	{
-		console.log(result);
-
-
-
-	}
+		vsgapp.favorites=JSON.parse(result);
+		console.log(vsgapp.favorites);
+	}	
 
 	if (vsgapp.email)
 	{
 		$.ajax({url: vsgapp.url+"/api/getfavorites", 
 		success: initFavorites,
-		failed: databaseNotLoaded,
+		failed: function(){alert("Comunication Error.");},
 		type:'POST',
 		data:{
 			'email':vsgapp.email,
 			'password':vsgapp.password,
+			async:true,
 		}
 		});
 
