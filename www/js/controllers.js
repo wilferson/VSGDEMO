@@ -96,11 +96,26 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams,$window,$state) {
 
+	if($window.vsgapp.loged)
+	{
+		$state.go('menu.home')
+	}
+	$scope.signupData={
+		name:'',
+		email:'',
+		password:'',
+		lastname:'',
+		location:'defult',
+		phone:'',
+		password2:'',
+		birthday:'',
+		sex:''
+	}
+
 	$scope.signup=function()
 	{
-		signupdata={'email':$scope.email,
-					 'password':$scope.password,};
-	console.log(signupdata);
+		
+			$window.signup($scope.signupData);	
 	
 		}
 		

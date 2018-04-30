@@ -222,3 +222,33 @@ function checkVariable( variable,callback) {
        callback();
    }
  }
+ function signup(data)
+ {
+	localStorage.setItem("email",data.email);
+	vsgapp.email=data.email;
+	navigator.splashscreen.show();
+	$.ajax({url: vsgapp.url+"/api/signup", 
+	success: signupSucces,
+	error: function(result){alert("Network error");
+	navigator.splashscreen.hide();
+	},
+	type:'POST',
+	data:data,
+	});
+ }
+
+ function signupSucces(result)
+ {
+	 response=JSON.parse(result);
+	 if (response.success)
+	 {
+		alert("Thank you for your registration.");
+		vsgapp.token=response.token;
+		localStorage.setItem("token",response.token);
+	 }else
+	 {
+		alert(response.error);
+	 }
+	 navigator.splashscreen.hide();
+	 location.reload();
+ }

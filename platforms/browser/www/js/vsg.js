@@ -222,3 +222,22 @@ function checkVariable( variable,callback) {
        callback();
    }
  }
+ function signup(data)
+ {
+	navigator.splashscreen.show();
+	$.ajax({url: vsgapp.url+"/api/signup", 
+	success: signupSucces,
+	error: function(result){alert("Network error");
+	navigator.splashscreen.hide();
+	},
+	type:'POST',
+	data:data,
+	});
+ }
+
+ function signupSucces(result)
+ {
+	 console.log(result);
+	 navigator.splashscreen.hide();
+	 location.reload();
+ }
