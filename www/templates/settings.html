@@ -10,5 +10,23 @@
     </div>
     <div class="spacer" style="height: 100px;"></div>
     <a ng-click="logout()" id="settings-button10" class="button button-assertive button-block">Log Out</a>
-  </ion-content>
+  </ion-content> 
+  <div class="tabs tabs-icon-left">
+      <a class="tab-item" ui-sref="menu.search()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+    <a class="tab-item" ui-sref="menu.home()">
+      <i class="icon ion-home"></i>
+      Home
+    </a>
+    <a class="tab-item" ui-sref="menu.favorites()">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item" ui-sref="menu.settings()">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </ion-view>

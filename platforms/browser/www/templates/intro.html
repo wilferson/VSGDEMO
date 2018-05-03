@@ -1,7 +1,9 @@
-<ion-view title="Intro" hide-nav-bar="true" hide-back-button="true" cache-view="false" id="page17" style="">
+<ion-view title="Intro" hide-nav-bar="true" hide-back-button="true" ng-init="sliderStyle={}" cache-view="false" id="page17" style="">
+
   <ion-content padding="false" class=" manual-remove-top-padding" scroll="false">
-    <ion-slides disable-side-menu-drag="" options="{'loop': false}" slider="slider2" delegate-handle="slider2" id="intro-slider2" style="width:100%;height:100%;">
-      <ion-slide-page id="intro-slide27" style="background-color:#F1EA2B;" class="padding">
+
+    <ion-slides disable-side-menu-drag="" style="background-color:{{background_styler}}; transition: background 1s ease; " options="{'speed': 500,'pager':true,'loop': false,'parallax':true,'paginationType':'fraction'}" slider="slider.data" delegate-handle="slider2" id="intro-slider2"  >
+      <ion-slide-page id="intro-slide27" data-background="#F1EA2B" class="padding" ng-style="sliderStyle">
         <div style="display:table;width:100%;height:100%;">
           <div style="display:table-row;">
             <div style="display:table-cell;vertical-align:middle;">
@@ -16,25 +18,25 @@
           </div>
         </div>
       </ion-slide-page>
-      <ion-slide-page id="intro-slide21" style="background-color:#3A81F8;" class="padding">
+      <ion-slide-page id="intro-slide21" data-background="#3A81F8" ng-style="sliderStyle" class="padding">
         <div style="display:table;width:100%;height:100%;">
           <div style="display:table-row;">
             <div style="display:table-cell;vertical-align:middle;">
               <h1 id="intro-heading10" style="color: rgb(244, 244, 244); text-align: center;">Easily search producst by name or company</h1>
               <h4 id="intro-heading11" style="color: rgb(240, 240, 240); font-weight: 300; text-align: center;">Add to shopping list, find where yo buy and use it to make delicious suggested recipes.</h4>
               <div>
-                <img src="img/oZEpuiWQSYqDeT5T7sq4_1azul-02.png" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
+                <img src="img/oZEpuiWQSYqDeT5T7sq4_1azul-02.png" style="display: block; width: auto; height: 70vh; margin-left: auto; margin-right: auto;">
               </div>
             </div>
           </div>
         </div>
       </ion-slide-page>
-      <ion-slide-page id="intro-slide22" style="background-color:#C03AF8;" class="padding">
-        <div style="display:table;width:100%;height:100%;">
+      <ion-slide-page id="intro-slide22" data-background="#C03AF8" ng-style="sliderStyle" class="padding">
+        <div style="display:table;width:100%;height:80vh;">
           <div style="display:table-row;">
             <div style="display:table-cell;vertical-align:middle;">
               <div>
-                <img src="img/3gknpBqqQ5yBC8pqpTQx_2purpura-03.png" style="display: block; width: 80%; height: auto; margin-left: auto; margin-right: auto;">
+                <img src="img/3gknpBqqQ5yBC8pqpTQx_2purpura-03.png" style="display: block; width: auto; height: 70vh; margin-left: auto; margin-right: auto;">
               </div>
               <h1 id="intro-heading12" style="color: rgb(244, 244, 244); text-align: center;">Amazing userful tools</h1>
               <h4 id="intro-heading13" style="color: rgb(240, 240, 240); text-align: center;">Share with your friends, save to favorites or send to shopping cart</h4>
@@ -42,7 +44,7 @@
           </div>
         </div>
       </ion-slide-page>
-      <ion-slide-page id="intro-slide23" style="background-color:#F83A3A;" class="padding">
+      <ion-slide-page id="intro-slide23" data-background="#F83A3A;" ng-style="sliderStyle" class="padding">
         <div style="display:table;width:100%;height:100%;">
           <div style="display:table-row;">
             <div style="display:table-cell;vertical-align:middle;">
@@ -50,7 +52,7 @@
               <div id="intro-container26" class="usa">
                 <div>
                   <a style="display:block;" ui-sref="login()">
-                    <img src="img/MK0ZgHLkQwOUNDbdlXYf_boton-01.png" style="display: block; width: 30%; height: auto; margin-left: auto; margin-right: auto;">
+                    <img src="img/MK0ZgHLkQwOUNDbdlXYf_boton-01.png" style="display: block; width: auto; height: 15vh; margin-left: auto; margin-right: auto;">
                   </a>
                 </div>
                 <h3 id="intro-heading16" style="color: rgb(255, 255, 255); text-align: center;">United States</h3>
@@ -58,7 +60,7 @@
               <div id="intro-container28" class="canada">
                 <div>
                   <a style="display:block;" ui-sref="login()">
-                    <img src="img/hqy0iQm6SriPQ4ktyje5_boton-03.png" style="display: block; width: 30%; height: auto; margin-left: auto; margin-right: auto;">
+                    <img src="img/hqy0iQm6SriPQ4ktyje5_boton-03.png" style="display: block; width: auto; height: 15vh; margin-left: auto; margin-right: auto;">
                   </a>
                 </div>
                 <h3 id="intro-heading17" style="color: rgb(255, 255, 255); text-align: center;">Canada</h3>
@@ -66,7 +68,7 @@
               <div id="intro-container29" class="uk">
                 <div>
                   <a style="display:block;" ui-sref="login()">
-                    <img src="img/5S3CzKEaRYCSse9SdYVw_boton-02.png" style="display: block; width: 30%; height: auto; margin-left: auto; margin-right: auto;">
+                    <img src="img/5S3CzKEaRYCSse9SdYVw_boton-02.png" style="display: block;width: auto; height: 15vh; margin-left: auto; margin-right: auto;">
                   </a>
                 </div>
                 <h3 id="intro-heading18" style="color: rgb(255, 255, 255); text-align: center;">United Kingdom</h3>
@@ -77,4 +79,5 @@
       </ion-slide-page>
     </ion-slides>
   </ion-content>
+
 </ion-view>

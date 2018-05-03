@@ -9,14 +9,15 @@
       </div>
     </div>
     <div id="products-container22" class="categories">
-      <div id="products-container16" class="ads transp creator-container"></div>
-      <ion-list id="products-list10">
+      <div id="products-container16" class="ads transp creator-container">
+          <img src="{{addata.imageURL}}" ng-show="addata.imageURL.length>0" class="ad top-ad">
+      </div>
         
-
+<ion-list>
  <div ng-repeat="offer in database.offers">
 
-         <div ng-if="offer.category_id === cat">
-            <ion-item ui-sref="menu.productName({off_id:offer.id})" style="" class="item item-thumbnail-left">
+         <div ng-if="offer.category_id === cat && offer.title!='_store'">
+            <ion-item ui-sref="menu.productName({off_id:offer.id,store_id:offer.store_id})" style="" class="item item-thumbnail-left">
                
                    <img src="{{baseurl+database.images[offer.image_id].url}}" ng-hide="offer.image_id===null">
                 
@@ -26,18 +27,30 @@
           </div>
 
       </div>
+  </ion-list>
 
 
-
-
-
-
-
-
-
-
-
-      </ion-list>
+     
     </div>
   </ion-content>
+ 
+   
+  <div class="tabs tabs-icon-left">
+      <a class="tab-item" ui-sref="menu.search()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+    <a class="tab-item" ui-sref="menu.home()">
+      <i class="icon ion-home"></i>
+      Home
+    </a>
+    <a class="tab-item" ui-sref="menu.favorites()">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item" ui-sref="menu.settings()">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </ion-view>

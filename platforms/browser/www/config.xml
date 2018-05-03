@@ -17,8 +17,8 @@
     <allow-intent href="geo:*" />
     <allow-intent href="http://veganshoppingapp.com/*" />
     <allow-navigation href="*" />
-    <preference name="SplashScreenDelay" value="30000" />
     <preference name="SplashScreen" value="res/screen/all/screen-loading.png" />
+    <preference name="SplashScreenDelay" value="3000" />
     <preference name="SplashScreenBackgroundColor" value="white" />
     <preference name="ShowSplashScreen" value="true" />
     <preference name="SplashScreenWidth" value="600" />

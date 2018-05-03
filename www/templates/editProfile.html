@@ -4,18 +4,18 @@
       <div class="profilePic">
         <img src="img/WeQpxJSzRb67XloFdc4H_profile.png" style="display: block; width: 80px; height: auto; margin-left: auto; margin-right: auto;">
       </div>
-      <h4 id="editProfile-heading3" style="color: rgb(0, 0, 0); font-weight: 400; text-align: center;">@UserName</h4>
+      <h4 id="editProfile-heading3" style="color: rgb(0, 0, 0); font-weight: 400; text-align: center;">@{{vsgapp.name}}</h4>
     </div>
     <form id="editProfile-form7" class="list profileForm">
       <label class="item item-input" id="editProfile-input13" name="fullName">
         <span class="input-label">Name</span>
-        <input placeholder="Full name" type="text">
+        <input placeholder="Full name" type="text" value="{{vsgapp.name +' '+ vsgapp.lastname}} ">
       </label>
       <label class="item item-input" id="editProfile-textarea1" name="Bio">
         <span class="input-label">About me</span><textarea placeholder="Tell us something about you"></textarea></label>
       <label class="item item-input" id="editProfile-input15" name="email">
         <span class="input-label">E-mail</span>
-        <input placeholder="something@company.com" type="email">
+        <input placeholder="something@company.com" type="email" value=" {{vsgapp.email}}">
       </label>
       <label class="item item-input" id="editProfile-input16" name="location">
         <span class="input-label">Location</span>

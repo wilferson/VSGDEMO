@@ -1,17 +1,71 @@
 <ion-view title="Search" id="page3" style="">
   <ion-content padding="false" class="has-header">
     <form id="search-form4" class="list man">
-      <label class="item item-input yellowm" id="search-search1" name="search" style="">
+      <label class="item item-input yellowm" id="search-search1"  name="search" style="">
         <i class="icon ion-search placeholder-icon"></i>
-        <input placeholder="Search..." type="search">
+        <input placeholder="Search..." type="search" ng-model="q" >
       </label>
-      <div id="search-button-bar2" class="button-bar yellowd">
-        <a href-inappbrowser="#" id="search-button12" class="button button-light button-block button-outline">Latest</a>
-        <a href-inappbrowser="#" id="search-button13" class="button button-light button-block button-outline">Favorites</a>
-        <a href-inappbrowser="#" id="search-button14" class="button button-light button-block button-outline">Popular</a>
+      <div id="search-button-bar2" class="button-bar yellowd" >
+        <a ng-click="select_q=0" ng-class="{'active' : select_q==0 }" class="button button-light button-block button-outline">Categories</a>
+        <a ng-click="select_q=1" ng-class="{'active' : select_q==1 }" class="button button-light button-block button-outline">Products</a>
+        <a ng-click="select_q=2" ng-class="{'active' : select_q==2 }" class="button button-light button-block button-outline">Stores</a>
       </div>
     </form>
-    <div id="search-container11" class="ads transp creator-container"></div>
-    <div id="search-container9" class="results transp creator-container"></div>
+    <div id="search-container11" class="ads transp creator-container">
+        <img src="{{adpath}}" ng-show="adpath" class="ad top-ad">
+    </div>
+    <div id="search-container9" class="results transp creator-container">
+    <div class="query-contianer">
+        <ion-list id="query-list" >
+            <div ng-repeat="category in db.categories | filter:q as resultsc" class="animate-repeat" ng-if="select_q==0" >
+                  <ion-item ui-sref="menu.products({cat_id:category.id})" style="" class="item item-thumbnail-left">
+                      <img src="{{baseurl+db.images[category.image_id].url}}" ng-if="category.image_id!=null">  
+                      <h2>{{category.name}}</h2>
+                      <p>{{category.description}}</p> 
+                  </ion-item>
+            </div>
+            <div ng-repeat="offer in db.offers | filter:q as resultso" class="animate-repeat" ng-if="select_q==1" >
+                <ion-item ui-sref="menu.productName({off_id:offer.id,store_id:offer.store_id})" style="" class="item item-thumbnail-left" ng-if="offer.title!='_store'&&offer.category_id!=null"}>
+                    <img src="{{baseurl+db.images[offer.image_id].url}}" ng-if="offer.image_id!=null">  
+                    <h2>{{offer.title}}</h2>
+                    <p>{{offer.description}}</p> 
+                </ion-item>
+          </div>
+          <div ng-repeat="store in db.stores | filter:q as resultss" class="animate-repeat" ng-if="select_q==2" >
+              <ion-item ui-sref="menu.productName({store_id:store.id})" style="" class="item item-thumbnail-left">
+                  <img src="{{baseurl+db.images[store.image_id].url}}" ng-if="store.image_id!=null">  
+                  <h2>{{store.name}}</h2>
+                  <p>{{store.description}}</p> 
+              </ion-item>
+        </div>
+           
+        </ion-list>
+        <strong ng-if="resultsc.length==0 && select_q==0" class="animate-repeat" >No results found in categories...</strong>
+        <strong ng-if="resultso.length==0  && select_q==1" class="animate-repeat" >No results found in products...</strong>
+        <strong ng-if="resultss.length==0  && select_q==2" class="animate-repeat" >No results found in products...</strong>
+    </div>
+  </div>
+
   </ion-content>
+
+  
+   
+  <div class="tabs tabs-icon-left">
+      <a class="tab-item" ui-sref="menu.search()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+    <a class="tab-item" ui-sref="menu.home()">
+      <i class="icon ion-home"></i>
+      Home
+    </a>
+    <a class="tab-item" ui-sref="menu.favorites()">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item" ui-sref="menu.settings()">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </ion-view>

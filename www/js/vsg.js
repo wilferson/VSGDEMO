@@ -1,4 +1,60 @@
+//Some others code
+/*
+ * object.watch polyfill
+ *
+ * 2012-04-03
+ *
+ * By Eli Grey, http://eligrey.com
+ * Public Domain.
+ * NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
+ */
 
+// object.watch
+if (!Object.prototype.watch) {
+	Object.defineProperty(Object.prototype, "watch", {
+		  enumerable: false
+		, configurable: true
+		, writable: false
+		, value: function (prop, handler) {
+			var
+			  oldval = this[prop]
+			, newval = oldval
+			, getter = function () {
+				return newval;
+			}
+			, setter = function (val) {
+				oldval = newval;
+				return newval = handler.call(this, prop, oldval, val);
+			}
+			;
+			
+			if (delete this[prop]) { // can't watch constants
+				Object.defineProperty(this, prop, {
+					  get: getter
+					, set: setter
+					, enumerable: true
+					, configurable: true
+				});
+			}
+		}
+	});
+}
+
+// object.unwatch
+if (!Object.prototype.unwatch) {
+	Object.defineProperty(Object.prototype, "unwatch", {
+		  enumerable: false
+		, configurable: true
+		, writable: false
+		, value: function (prop) {
+			var val = this[prop];
+			delete this[prop]; // remove accessors
+			this[prop] = val;
+		}
+	});
+}
+
+//Our object
 var vsgapp={
 	url:"http://veganshoppingapp.com",
 	favorites:{},
@@ -12,16 +68,30 @@ var vsgapp={
 		stores:{}
 	},
 };
-var origAlert=alert;
+
+
+
+
+
+
+var safeColors = ['00','33','66','99','cc','ff'];
+var rand = function() {
+    return Math.floor(Math.random()*6);
+};
+var randomColor = function() {
+    var r = safeColors[rand()];
+    var g = safeColors[rand()];
+    var b = safeColors[rand()];
+    return "#"+r+g+b;
+};
 
  
 function constructPages()
 {
 //Done loading, remove Splash
 //Reconstruct pages and 
-
-   navigator.splashscreen.hide();	
-
+	
+  
 	  
 }
 function render_home($scope,$stateParams)
@@ -60,7 +130,7 @@ function render_home($scope,$stateParams)
  		 		for (var i = temp.Stores.length - 1; i >= 0; i--) {
  			database.stores[temp.Stores[i].id.toString()]=temp.Stores[i];
  		}
-		console.log(database);
+	
 	 //Populate landing page
 	 window.sessionStorage.setItem("database", JSON.stringify(database));
 	 
@@ -95,6 +165,7 @@ function render_home($scope,$stateParams)
 			if(response.success)
 			{
 				vsgapp.loged=response.success;
+				localStorage.setItem("loged",true);
 				vsgapp.usertype=response.user.type;
 				vsgapp.name=response.user.name;
 				vsgapp.lastname=response.user.lastname;
@@ -108,7 +179,7 @@ function render_home($scope,$stateParams)
 				vsgapp.phone=response.user.phone;
 				vsgapp.gender=response.user.sex;
 				if(safecallback)
-				{	console.log(safecallback);
+				{	
 					safecallback.favorites=vsgapp.favorites;
 					safecallback.$apply();
 				}
@@ -143,8 +214,11 @@ function loadPage()
 
 
 }
-document.addEventListener('deviceready', loadPage);
 
+function retriveUserConfig()
+{
+	vsgapp.loged=localStorage.getItem("loged");
+}
 function main_page($scope,$stateParams)
 {
 
@@ -183,13 +257,12 @@ function loginSucces(result)
 	{
 	window.localStorage.setItem("token",response.token);
 	loadProfile();
-	navigator.splashscreen.hide();
+
 	window.history.back();
 	}
 	else{
 		alert(response.error);
-		navigator.splashscreen.hide();
-		
+	
 	}
 
 }
@@ -201,7 +274,7 @@ function logout()
 	}
 	else
 	{
-		window.localStorage.setItem("token","");
+
 		vsgapp.loged=false;
 		vsgapp.favorites=null;
 		state.go('intro');
@@ -267,4 +340,32 @@ function checkVariable( variable,callback) {
 	 }
 	 navigator.splashscreen.hide();
 	 location.reload();
+ }
+
+ function getad($http)
+ {
+
+	var result={
+		url:'',
+		offer:{},
+		imageURL:''
+	}
+  
+	var baseurl=vsgapp.baseurl;
+	 $http.get(baseurl+"/api/getad")
+	  .then(function(response)
+	  {
+		  if(response.data)
+		  {
+			  data=response.data;
+			  if(data.image_id)
+			  {
+				  result.offer=data;
+				  result.url=data.url;
+				  result.imageURL=vsgapp.database.images[dara.image_id].url;
+			  }
+		  }
+  
+	  });
+	  return result;
  }

@@ -10,12 +10,12 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
     $ionicConfigProvider.backButton.text('').previousTitleText(false);
-
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**','http://veganshoppingapp.com/**']);
 
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$ionicPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -27,6 +27,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    window.alert=  function(msg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Vegan Shoping Guide',
+        template: msg
+      });
+    }
+
+    // add a wach to vsgapp.database
+    window.navigator.splashscreen.hide();
   });
 })
 
@@ -59,7 +68,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
 /*
   This directive is used to open regular and dynamic href links inside of inappbrowser.
-*/
+*//*
 .directive('hrefInappbrowser', function() {
   return {
     restrict: 'A',
@@ -82,4 +91,4 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       });
     }
   };
-});
+})*/;

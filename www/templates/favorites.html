@@ -1,7 +1,9 @@
 <ion-view title="Favorites" cache-view="false" id="page19" style="background-color: rgb(242, 242, 242);">
   <ion-content padding="false" class="has-header">
     <div id="favorites-container32" class="categories">
-      <div id="favorites-container31" class="ads transp creator-container"></div>
+      <div id="favorites-container31" class="ads transp creator-container">
+          <img src="{{addata.imageURL}}" ng-show="addata.imageURL.length>0" class="ad top-ad">
+      </div>
       <div id="favorites-markdown18" class="show-list-numbers-and-dots">
         <p style="color:#000000;">
           <strong>Slide</strong> to see options</p>
@@ -9,14 +11,28 @@
       <ion-list id="favorites-list14" ng-if="favorites">
         
         <div ng-repeat="fav in favorites">
-          
-          <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName({off_id:fav.offer_id})" style="">
-            <img ng-show="db.offers[fav.offer_id].image_id" src="{{baseurl+db.images[db.offers[fav.offer_id].image_id].url}}">
-            <h2>{{db.offers[fav.offer_id].title}}</h2>
-            <p>{{db.offers[fav.offer_id].description}}</p>
-            <i class="icon ion-android-arrow-dropright icon-accessory"></i>
-            <ion-option-button class="button-assertive" ng-click="deleteFav(fav)">Delete</ion-option-button>
-          </ion-item>
+          <div ng-if="db.offers[fav.offer_id].title!='_store' &&db.offers[fav.offer_id].category_id!=null" >
+            <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName({off_id:fav.offer_id})" style="">
+              <img ng-show="db.offers[fav.offer_id].image_id" src="{{baseurl+db.images[db.offers[fav.offer_id].image_id].url}}">
+              <h2>{{db.offers[fav.offer_id].title}}</h2>
+              <p>{{db.offers[fav.offer_id].description}}</p>
+              <i class="icon ion-android-arrow-dropright icon-accessory"></i>
+                <ion-option-button class="button-balanced" ng-click="movte(fav,0)">View Web</ion-option-button>
+                <ion-option-button class="button-energized" ng-click="moveto(fav,1)">View Recipes</ion-option-button>
+                <ion-option-button class="button-calm" ng-click="moveto(fav,2)">View Location</ion-option-button>
+            </ion-item>
+          </div>
+          <div ng-if="db.offers[fav.offer_id].title=='_store'" >
+              <ion-item class="item-thumbnail-left item-icon-right"  ui-sref="menu.productName({store_id:db.offers[fav.offer_id].store_id})" style="">
+                <img ng-show="db.stores[db.offers[fav.offer_id].store_id].image_id" src="{{baseurl+db.images[db.stores[db.offers[fav.offer_id].store_id].image_id].url}}">
+                <h2>{{db.stores[db.offers[fav.offer_id].store_id].name}}</h2>
+                <p>{{db.stores[db.offers[fav.offer_id].store_id].description}}</p>
+                <i class="icon ion-android-arrow-dropright icon-accessory"></i>
+                <ion-option-button class="button-balanced" ng-click="moveto(fav,0)">View Web</ion-option-button>
+                <ion-option-button class="button-energized" ng-click="moveto(fav,1)">View Recipes</ion-option-button>
+                <ion-option-button class="button-calm" ng-click="moveto(fav,2)">View Location</ion-option-button>
+              </ion-item>
+            </div>
         </div>
       </ion-list>
       <p ng-if="isEmpty(favorites)">
@@ -24,4 +40,23 @@
       </p>
     </div>
   </ion-content>
+ 
+  <div class="tabs tabs-icon-left">
+      <a class="tab-item" ui-sref="menu.search()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+    <a class="tab-item" ui-sref="menu.home()">
+      <i class="icon ion-home"></i>
+      Home
+    </a>
+    <a class="tab-item" ui-sref="menu.favorites()">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item" ui-sref="menu.settings()">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </ion-view>

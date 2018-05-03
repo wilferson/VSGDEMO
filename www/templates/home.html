@@ -1,29 +1,46 @@
 <ion-view title="Home" id="page1" style="background-color: rgb(242, 242, 242);" >
   <ion-content padding="false" class="has-header">
+      <ion-refresher >
+          <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
     <div id="home-container19" class="head">
       <div>
         <img src="img/PyK3B4YRwqWRBHwQFnwo_logo.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
       </div>
     </div>
+      <div id="home-container21" class="ads transp creator-container">
+          <img src="{{addata.imageURL}}" ng-show="addata.imageURL.length>0" class="ad top-ad">
+      </div>
+      
     <div id="home-container20" class="categories">
-      <div id="home-container21" class="ads transp creator-container"></div>
-      <ion-list id="home-list11">
-      <div ng-repeat="category in database.categories">
-
-         <div ng-if="category.parent_id === null">
-            <ion-item ui-sref="menu.products({cat_id:category.id})" style="" class="item item-thumbnail-left">
-               
-                   <img src="{{baseurl+database.images[category.image_id].url}}" ng-if="category.image_id!=null">
-                
-                <h2>{{category.name}}</h2>
-                <p>{{category.description}}</p> 
-            </ion-item>
-          </div>
+    
+      <div class="data-container-2x2" style="width: 100%; height: 100%;" class="respomsive-sm">
+        <div class="col col-50 category-item" ui-sref="menu.products({cat_id:category.id})" ng-repeat="category in db.categories" style=" background-image:url('{{baseurl+db.images[category.image_id].url}}') ">
+          <h1 style="color: white" class="one-word-per-line">{{category.name}}</h1>
+        </div>
 
       </div>
 
-      </ion-list>
-
     </div>
   </ion-content>
+  
+  
+  <div class="tabs tabs-icon-left">
+      <a class="tab-item" ui-sref="menu.search()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+    <a class="tab-item" ui-sref="menu.home()">
+      <i class="icon ion-home"></i>
+      Home
+    </a>
+    <a class="tab-item" ui-sref="menu.favorites()">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item" ui-sref="menu.settings()">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </ion-view>

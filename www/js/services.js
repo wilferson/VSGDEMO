@@ -1,9 +1,9 @@
 angular.module('app.services', [])
 
-.factory('BlankFactory', [function(){
+.factory('vsgapp', [function(){
 
 }])
 
-.service('BlankService', [function(){
+.service('ad', [function($http,$window){
 
 }]);

@@ -1,7 +1,9 @@
-<ion-view title="{{database.offers[off].title}}" id="page14" style="background-color: rgb(244, 244, 244);">
+<ion-view title="{{database.stores[store_id].name}}" id="page14" style="background-color: rgb(244, 244, 244);">
+ 
   <ion-nav-buttons side="right" class="has-header">
-    <button ng-click="favClick(off)" class="button icon ion-heart"></button>
+    <button ng-click="favClick(off)" class="button icon ion-heart {{heartAnim}}" ng-style="heartStyle"></button>
   </ion-nav-buttons>
+
   <ion-content padding="true" class="has-header">
     <div id="productName-container25" class="storeInfo">
       <ion-slides disable-side-menu-drag="" options="{'loop': true}" slider="slider1" delegate-handle="slider1" id="productName-slider1" style="width:100%;height:200px;" class="companyLogo">
@@ -11,11 +13,11 @@
       </ion-slides>
       <div id="productName-markdown9" style="text-align:center;" class="show-list-numbers-and-dots">
         <p style="color:#000000;">
-          <strong>{{database.stores[database.offers[off].store_id].title}}</strong>
+          <strong>{{database.stores[store_id].name}}</strong>
         </p>
       </div>
     </div>
-    <div id="productName-container23" class="productInfo">
+    <div id="productName-container23" class="productInfo" ng-if="database.offers[off].title != '_store'">
       <h4 id="productName-heading4" style="color: rgb(0, 0, 0);">{{database.offers[off].title}}</h4>
       <div id="productName-markdown11" class="show-list-numbers-and-dots">
         <p style="color:#000000;">Product's description</p>
@@ -25,18 +27,28 @@
     </div>
     <div id="productName-container24" class="productImage">
       <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-        <i ng-if="database.images[database.stores[database.offers[off].store_id].image_id].url==null" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-        <img  ng-if="database.images[database.stores[database.offers[off].store_id].image_id].url" src="{{baseurl + database.images[database.stores[database.offers[off].store_id].image_id].url}}" >
+       
+       
+        <i ng-if="database.images[database.stores[store_id].image_id].url==null" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+       
+       
+       
+       
+       
+       
+       
+       
+        <img  ng-if="database.images[database.stores[store_id].image_id].url" src="{{baseurl + database.images[database.stores[store_id].image_id].url}}" >
 
       </div>
     </div>
     <div ng-if="database.offers[off].store_id" id="productName-container35" class="moreCompany">
-    <div id="productName-container27" class="moreCompany">
+    <div id="productName-container27" class="moreCompany" ng-if="store_id">
       <h3 id="productName-heading7" style="color: rgb(60, 60, 60); text-align: center;">More from this company</h3>
       <ion-list id="productName-list12">
         <div ng-repeat="offer in database.offers">
 
-         <div ng-if="offer.store_id === database.offers[off].store_id && offer.id !=off">
+         <div ng-if="offer.store_id === database.offers[off].store_id && offer.id !=off && offer.title!='_store'">
             <ion-item ui-sref="menu.productName({off_id:offer.id})" style="" class="item item-thumbnail-left">
                
                    <img src="{{baseurl+database.images[offer.image_id].url}}" ng-hide="offer.image_id===null">
@@ -64,4 +76,23 @@
     </a>
     </div>
   </ion-content>
+  
+  <div class="tabs tabs-icon-left">
+      <a class="tab-item" ui-sref="menu.search()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+    <a class="tab-item" ui-sref="menu.home()">
+      <i class="icon ion-home"></i>
+      Home
+    </a>
+    <a class="tab-item" ui-sref="menu.favorites()">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item" ui-sref="menu.settings()">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </ion-view>
