@@ -59,7 +59,7 @@ function ($scope, $stateParams,$window,$state,$http) {
 		surls=db.stores[db.offers[fav.offer_id].store_id].url.split(";");
 		if(surls[urlindex])
 		{
-			var ref = cordova.InAppBrowser.open(surls[urlindex], '_blank', 'location=yes');
+			var ref = $window.cordova.InAppBrowser.open(surls[urlindex], '_blank', 'location=yes');
 		}
 	}else
 	{
