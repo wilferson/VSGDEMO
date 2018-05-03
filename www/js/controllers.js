@@ -254,7 +254,7 @@ function ($scope, $stateParams,$window,$state) {
 	if($scope.off=="" && $scope.store_id)
 	{
 		myoffers=Object.keys(db.offers).map(function(val) { return db.offers[val] });
-		myoffers.forEach(element => {if (element.title=='_store' && element.store_id==$scope.store_id){
+		myoffers.forEach(function(element){if (element.title=='_store' && element.store_id==$scope.store_id){
 			$scope.off=element.id;
 		}
 			
