@@ -41,6 +41,7 @@ function ($scope, $stateParams,$window,$state,$http) {
 					$window.loadProfile($scope);
 				}
 		}
+		
 
 	
 
@@ -223,12 +224,31 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('editProfileCtrl', ['$scope', '$stateParams', '$window',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('editProfileCtrl', ['$scope', '$stateParams','$state' ,'$window','$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams,$window) {
+function ($scope, $stateParams,$state,$window,$ionicPopup) {
 
 $scope.vsgapp=$window.vsgapp;
+
+if($scope.vsgapp.loged==false)
+{
+
+
+		var confirmPopup = $ionicPopup.confirm({
+		  title: 'You must sign in',
+		  template: "Please log in."
+		});
+		confirmPopup.then(function(res) {
+		  if(res) {
+			$state.go('login')
+		  } else {
+			$window.history.back();
+		  }
+		});
+
+	}
+
 }])
    
 .controller('recipeNameCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
