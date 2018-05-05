@@ -2,7 +2,7 @@
 <widget id="io.cordova.hellocordova" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>VeganShopinGuide</name>
     <description>
-      List of Vegan products & stores world-wide, search by name or by store, add to your favorites,
+      List of Vegan products and stores world-wide, search by name or by store, add to your favorites,
       look for recipes and much more.
     </description>
     <author email="dev@ansertm.io" href="http://asertm.io">
