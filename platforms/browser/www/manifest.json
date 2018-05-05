@@ -4,7 +4,7 @@
   "name": "VeganShopinGuide",
   "short_name": "VeganShopinGuide",
   "version": "io.cordova.hellocordova",
-  "description": "$app description",
+  "description": "List of Vegan products and stores world-wide, search by name or by store, add to your favorites,\n      look for recipes and much more.",
   "author": "Wilferson Avila ,Jonathan Barillas and Edgardo Ruiz.",
   "icons": [
     {

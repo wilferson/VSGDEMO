@@ -211,7 +211,7 @@ function ($scope, $stateParams,$window,$state) {
 	};
 	if ($window.vsgapp.loged)
 	{
-		$window.history.back();
+		$state.go('menu.home');
 	}
 
 }])
