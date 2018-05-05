@@ -48,7 +48,7 @@
       transform:  scaleX(0.30) scaleY(0.30) ;
     }
   }
-  h1.one-word-per-line {
+  h2.one-word-per-line {
     word-spacing: 3000px; 
     text-align: center;
     padding-top: 10%;

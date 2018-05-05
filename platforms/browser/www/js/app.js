@@ -23,6 +23,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
+    window.loadPage();
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -32,10 +33,11 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
         title: 'Vegan Shoping Guide',
         template: msg
       });
+     
     }
 
     // add a wach to vsgapp.database
-    window.navigator.splashscreen.hide();
+    
   });
 })
 

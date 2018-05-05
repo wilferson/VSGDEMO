@@ -91,7 +91,7 @@ function constructPages()
 //Done loading, remove Splash
 //Reconstruct pages and 
 	
-  
+  navigator.splashscreen.hide();
 	  
 }
 function render_home($scope,$stateParams)
@@ -142,7 +142,8 @@ function render_home($scope,$stateParams)
  }
  function databaseNotLoaded(result)
  {
- 	alert("Networking Error, try reestarting the app.");	
+	 alert("Networking Error, try reestarting the app.");	
+	 window.close();
  }
  function loadProfile(safecallback)
  {
@@ -193,6 +194,7 @@ function render_home($scope,$stateParams)
 function loadPage()
 {
 	loadProfile();
+	navigator.splashscreen.show();
 	//Our databes object does not exist so create it
 	if (window.sessionStorage.getItem("database")==null)
 	{

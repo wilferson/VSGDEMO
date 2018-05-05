@@ -16,7 +16,7 @@
     
       <div class="data-container-2x2" style="width: 100%; height: 100%;" class="respomsive-sm">
         <div class="col col-50 category-item" ui-sref="menu.products({cat_id:category.id})" ng-repeat="category in db.categories" style=" background-image:url('{{baseurl+db.images[category.image_id].url}}') ">
-          <h1 style="color: white" class="one-word-per-line">{{category.name}}</h1>
+          <h2 ng-hide="category.image_id"style="color: white" class="one-word-per-line">{{category.name}}</h2>
         </div>
 
       </div>

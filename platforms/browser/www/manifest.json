@@ -5,7 +5,38 @@
   "short_name": "VeganShopinGuide",
   "version": "io.cordova.hellocordova",
   "description": "$app description",
-  "author": "Wilferson Avila and Jonathan Barillas",
-  "icons": [],
+  "author": "Wilferson Avila ,Jonathan Barillas and Edgardo Ruiz.",
+  "icons": [
+    {
+      "src": "res/icon/android/ldpi.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "res/icon/android/mdpi.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "res/icon/android/hdpi.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "res/icon/android/xhdpi.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "res/icon/android/xxhdpi.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "res/icon/android/xxxhdpi.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
   "start_url": "index.html"
 }
