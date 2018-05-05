@@ -142,7 +142,9 @@ function ($scope, $stateParams,$window,$state) {
 $scope.loged=$window.vsgapp.loged;
 $window.state=$state;
 $scope.logout=function(){
-	$window.logout();
+	$window.logout();	
+	$window.localStorage.setItem("loged",false);
+	$window.loaclStorage.setItem("token",null);
 }
 
 
@@ -207,7 +209,7 @@ function ($scope, $stateParams,$window,$state) {
 
 	$scope.postLogin=function(){
 	
-		$window.login($scope.login.email,$scope.login.password)
+		$window.login($scope.login.email,$scope.login.password,$state)
 	};
 	if ($window.vsgapp.loged)
 	{
@@ -371,10 +373,10 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('introCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('introCtrl', ['$scope', '$stateParams','$window','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams,$window) {
+function ($scope, $stateParams,$window,$state) {
 
 	$window.introScope=$scope;
 	$scope.background_styler="#F1EA2B";
@@ -385,9 +387,8 @@ function ($scope, $stateParams,$window) {
 	  });
 	  
 	  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-		console.log('Slide change is beginning');
-		console.log(event);
-		console.log(data);
+		
+
 		$scope.background_styler=(data.slider.slides[data.slider.activeIndex].dataset.background);
 		$scope.$apply();
 	  });
@@ -399,4 +400,8 @@ function ($scope, $stateParams,$window) {
 		$scope.previousIndex = data.slider.previousIndex;
 	  });
 
+	  if ($window.localStorage.getItem("loged")=="true")
+	  {
+		  $state.go('menu.home');
+	  }
 }])

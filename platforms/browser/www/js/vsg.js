@@ -259,8 +259,7 @@ function loginSucces(result)
 	{
 	window.localStorage.setItem("token",response.token);
 	loadProfile();
-
-	window.history.back();
+		safecallback.go('menu.home');
 	}
 	else{
 		alert(response.error);
@@ -282,12 +281,13 @@ function logout()
 		state.go('intro');
 	}
 }
-function login(email,password)
+function login(email,password,safecallback)
 {
 	//Request a token.
 	localStorage.setItem("email",email);
 	vsgapp.email=email;
 	navigator.splashscreen.show();
+	window.safecallback=safecallback;
 	$.ajax({url: vsgapp.url+"/api/login", 
 		success: loginSucces,
 		error: function(result){alert("Network error");
