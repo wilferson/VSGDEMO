@@ -45,67 +45,51 @@
         </div>
       </ion-slide-page>
       <ion-slide-page id="intro-slide23" data-background="#F83A3A;" ng-style="sliderStyle" class="padding">
-        <div style="display:table;width:100%;height:100%;">
-          <div style="display:table-row;">
-            <div style="display:table-cell;vertical-align:middle;">
-              <h3 id="intro-heading14" style="color: rgb(244, 244, 244); text-align: center;">Select your country</h3>
-              <div id="intro-container26" class="usa">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/US.png" style="display: block; width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
+        <h1 style="text-align: center;color:rgb(244, 244, 244); ">Where are you from?</h1>
+
+        <div class="countrycontainer">
+          <div class="row responsive-em" style="width:75% ;margin:0 auto;">
+             
+              <div class="col col-50" ui-sref="login({country_id:'US'})" style="background-image: url('img/us.png');background-position:center;background-size:contain;background-repeat: no-repeat;height:20vh; " >
+                <a ui-sref="login({conutry_id:'US'})">
+                    
                   </a>
-                </div>
-                <h4 id="intro-heading16" style="color: rgb(255, 255, 255); text-align: center;">United States</h4>
               </div>
-              <div id="intro-container28" class="canada">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/CA.png" style="display: block; width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
+              <div class="col col-50" ui-sref="login({country_id:'UK'})" style="background-image: url('img/uk.png');background-position:center;background-size:contain;background-repeat: no-repeat;height:20vh; " >
+                <a ui-sref="login({conutry_id:'UK'})">
+                    
                   </a>
-                </div>
-                <h4 id="intro-heading17" style="color: rgb(255, 255, 255); text-align: center;">Canada</h4>
               </div>
-              <div id="intro-container29" class="UK">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/UK.png" style="display: block;width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
+              
+          </div>
+
+          <div class="row responsive-em" style="width:75% ;margin:0 auto;">
+             
+              <div class="col col-50" ui-sref="login({country_id:'GE'})" style="background-image: url('img/ge.png');background-position:center;background-size:contain;background-repeat: no-repeat;height:20vh; " >
+                <a ui-sref="login({conutry_id:'GE'})">
+                    
                   </a>
-                </div>
-                <h4 id="intro-heading18" style="color: rgb(255, 255, 255); text-align: center; ">United Kingdom</h4>
               </div>
-              <div id="intro-container30" class="uk">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/AU.png" style="display: block;width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
+              <div class="col col-50" ui-sref="login({country_id:'IN'})" style="background-image: url('img/in.png');background-position:center;background-size:contain;background-repeat: no-repeat;height:20vh; " >
+                <a ui-sref="login({conutry_id:'IN'})">
+                    
                   </a>
-                </div>
-                <h4 id="intro-heading18" style="color: rgb(255, 255, 255); text-align: center;">Australia</h4>
               </div>
-              <div id="intro-container31" class="uk">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/GE.png" style="display: block;width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
+              
+          </div>
+          <div class="row responsive-em" style="width:75% ;margin:0 auto;">
+             
+              <div class="col col-50" ui-sref="login({country_id:'AU'})" style="background-image: url('img/au.png');background-position:center;background-size:contain;background-repeat: no-repeat;height:20vh; " >
+                <a ui-sref="login({conutry_id:'US'})">
+                    
                   </a>
-                </div>
-                <h4 id="intro-heading18" style="color: rgb(255, 255, 255); text-align: center;">Germany</h4>
               </div>
-              <div id="intro-container32" class="uk">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/IN.png" style="display: block;width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
+              <div class="col col-50" ui-sref="login({country_id:'NONE'})" style="background-image: url('img/nocountry.png');background-position:center;background-size:contain;background-repeat: no-repeat;height:20vh; " >
+                <a ui-sref="login({conutry_id:'NONE'})">
+                    
                   </a>
-                </div>
-                <h4 id="intro-heading18" style="color: rgb(255, 255, 255); text-align: center;">India</h4>
               </div>
-              <div id="intro-container32" class="uk">
-                <div>
-                  <a style="display:block;" ui-sref="login()">
-                    <img src="img/nocontry.png" style="display: block;width: auto; height: 7vh; margin-left: auto; margin-right: auto;">
-                  </a>
-                </div>
-                <h4 id="intro-heading18" style="color: rgb(255, 255, 255); text-align: center;">Anywhere else</h4>
-              </div>
-            </div>
+              
           </div>
         </div>
       </ion-slide-page>
