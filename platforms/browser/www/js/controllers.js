@@ -144,7 +144,7 @@ $window.state=$state;
 $scope.logout=function(){
 	$window.logout();	
 	$window.localStorage.setItem("loged",false);
-	$window.loaclStorage.setItem("token",null);
+	$window.localStorage.setItem("token",null);
 }
 
 

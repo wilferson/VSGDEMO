@@ -147,6 +147,7 @@ function render_home($scope,$stateParams)
  }
  function loadProfile(safecallback)
  {
+	 navigator.splashscreen.hide();
 	 	//Get user data from the localstorage
 	vsgapp.auth=localStorage.getItem("token");
 	if(vsgapp.auth)
