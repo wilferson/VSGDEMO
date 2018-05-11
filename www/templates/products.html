@@ -16,7 +16,7 @@
 <ion-list>
  <div ng-repeat="offer in database.offers">
 
-         <div ng-if="offer.category_id === cat && offer.title!='_store' offer.country_id==locale)">
+         <div ng-if="offer.category_id === cat && offer.title!='_store'&& offer.country_id==locale">
             <ion-item ui-sref="menu.productName({off_id:offer.id,store_id:offer.store_id})" style="" class="item item-thumbnail-left">
                
                    <img src="{{baseurl+database.images[offer.image_id].url}}" ng-hide="offer.image_id===null">
