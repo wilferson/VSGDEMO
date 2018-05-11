@@ -25,7 +25,7 @@
                   </ion-item>
             </div>
             <div ng-repeat="offer in db.offers | filter:q as resultso" class="animate-repeat" ng-if="select_q==1" >
-                <ion-item ui-sref="menu.productName({off_id:offer.id,store_id:offer.store_id})" style="" class="item item-thumbnail-left" ng-if="offer.title!='_store'&&offer.category_id!=null"}>
+                <ion-item ui-sref="menu.productName({off_id:offer.id,store_id:offer.store_id})" style="" class="item item-thumbnail-left" ng-if="offer.title!='_store'&&offer.category_id!=null&& offer.country_id==locale"}>
                     <img src="{{baseurl+db.images[offer.image_id].url}}" ng-if="offer.image_id!=null">  
                     <h2>{{offer.title}}</h2>
                     <p>{{offer.description}}</p> 
