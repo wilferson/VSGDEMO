@@ -9,7 +9,7 @@
       </form>
     </div>
     <div class="spacer" style="height: 100px;"></div>
-    <a ng-click="logout()" id="settings-button10" class="button button-assertive button-block">Log Out</a>
+    <a ng-click="logout()" id="settings-button10" class="button button-assertive button-block" ng-if="loged">Log Out</a>
   </ion-content> 
   <div class="tabs tabs-icon-left">
       <a class="tab-item" ui-sref="menu.search()">

@@ -61,6 +61,10 @@ var vsgapp={
 	loged:false,
 	username:null,
 	password:null,
+	cms:{
+		aboutus:"",
+		privacy:""
+	},
 	database:{
 		categories:{},
 		offers:{},
@@ -133,7 +137,7 @@ function render_home($scope,$stateParams)
 	
 	 //Populate landing page
 	 window.sessionStorage.setItem("database", JSON.stringify(database));
-	 
+	 vsgapp.cms=temp.CMS;
  	constructPages();
 
 	

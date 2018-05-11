@@ -144,8 +144,10 @@ $scope.loged=$window.vsgapp.loged;
 $window.state=$state;
 $scope.logout=function(){
 	$window.logout();	
+	$window.localStorage.clear();
 	$window.localStorage.setItem("loged",false);
 	$window.localStorage.setItem("token",null);
+
 }
 
 
@@ -363,19 +365,20 @@ function ($scope, $stateParams,$window,$state) {
 	
 }])
    
-.controller('aboutUsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('aboutUsCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,$window) {
 
+	$scope.cms=$window.vsgapp.cms;
 
 }])
    
-.controller('privacyPolicyCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('privacyPolicyCtrl', ['$scope', '$stateParams','$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
+function ($scope, $stateParams,$window) {
+	$scope.cms=$window.vsgapp.cms;
 
 }])
    
