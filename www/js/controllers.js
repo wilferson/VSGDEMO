@@ -80,6 +80,7 @@ function ($scope, $stateParams,$window,$http) {
 $window.currentScope=$scope;
 $scope.database=$window.vsgapp.database;
 $scope.baseurl=$window.vsgapp.url;
+$scope.locale=$window.vsgapp.locale;
 $scope.cat=$stateParams.cat_id;
 $scope.baseurl=$window.vsgapp.url;
 $scope.addata={};
