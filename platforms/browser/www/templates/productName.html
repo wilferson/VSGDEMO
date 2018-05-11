@@ -48,8 +48,8 @@
       <ion-list id="productName-list12">
         <div ng-repeat="offer in database.offers">
 
-         <div ng-if="offer.store_id === database.offers[off].store_id && offer.id !=off && offer.title!='_store' && offer.category_id!=null">
-            <ion-item ui-sref="menu.productName({off_id:offer.id})" style="" class="item item-thumbnail-left">
+         <div >
+            <ion-item ng-if="offer.store_id === database.offers[off].store_id && offer.id !=off && offer.title!='_store' && offer.category_id!=null" ui-sref="menu.productName({off_id:offer.id})" style="" class="item item-thumbnail-left">
                
                    <img src="{{baseurl+database.images[offer.image_id].url}}" ng-hide="offer.image_id===null">
                 
@@ -63,7 +63,8 @@
     </div>
 
       <p>
-        {{database.stores[database.offers[off].store_id].description}}
+     
+        
       </p>
      <a href="{{surls[0]}}"  ng-if="surls[0]!=undefined">
       <button id="productName-button32"  class="button button-assertive button-block icon-left ion-ios-world">Visit website</button>

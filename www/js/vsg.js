@@ -194,6 +194,10 @@ function render_home($scope,$stateParams)
  }
 function loadPage()
 {
+	if(window.localStorage.getItem("locale"))
+	{
+		vsgapp.locale=window.localStorage.getItem("locale");
+	}
 	loadProfile();
 	navigator.splashscreen.show();
 	//Our databes object does not exist so create it

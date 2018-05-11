@@ -102,7 +102,7 @@ function ($scope, $stateParams) {
 function ($scope, $stateParams,$window) {
 //Traspose db to array
 var ldb=$window.vsgapp.database;
-	
+$scope.locale=$window.vsgapp.locale;	
 $scope.db={
 	categories:[],
 	offers:[],
@@ -203,6 +203,11 @@ function ($scope, $stateParams) {
 function ($scope, $stateParams,$window,$state) {
 
 	$scope.vsgapp=$window.vsgapp;
+	if($stateParams.country_id)
+	{
+		$window.localStorage.setItem("locale",$stateParams.country_id);
+		$window.vsgapp.locale=$stateParams.country_id;
+	}
 	$window.state=$state;
 	$scope.login ={email:"",
 					password:""};
@@ -211,7 +216,7 @@ function ($scope, $stateParams,$window,$state) {
 	
 		$window.login($scope.login.email,$scope.login.password,$state)
 	};
-	if ($window.vsgapp.loged)
+	if ($window.vsgapp.loged==true)
 	{
 		$state.go('menu.home');
 	}

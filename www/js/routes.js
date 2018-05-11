@@ -101,7 +101,7 @@ angular.module('app.routes', [])
   })
 
   .state('login', {
-    url: '/login',
+    url: '/login:country_id',
     templateUrl: 'templates/login.html',
     controller: 'loginCtrl'
   })
